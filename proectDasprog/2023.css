@@ -1,0 +1,497 @@
+/* 2023.css */
+/* Header Styles */
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+.header{
+    width: 100%;
+    height: 90vh;
+
+}
+
+.header video{
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    text-align: center;
+    
+}
+
+.content h1{
+    font-size: 100px;
+    color: white;
+    font-weight: 600;
+    justify-content: center;
+   text-align: center;
+   transition: 1s ;
+   padding-top: 200px;
+   margin-bottom: 0;
+
+
+}
+
+.content h1:hover{
+    -webkit-text-stroke: 2px white;
+    color: transparent;
+}
+
+.content a{
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+    display: inline-block;
+    color: white;
+    font-size: 24px;
+    border: 2px solid white;
+    padding: 14px 70px;
+    border-radius: 50px;
+    margin-top: 10px;
+    transition: 1s;
+}
+
+.content a:hover{
+    color: white;
+    border: 6px solid white;
+    
+}
+
+.back-video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9){
+    back-video{
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9){
+    back-video{
+        width: auto;
+        height: 100%;
+    }
+}
+
+
+
+
+
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(5, 116, 176);
+    color: aliceblue;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background-color 1s ease;
+}
+
+.btn:hover{
+    background-color:rgb(6, 154, 234);
+}
+
+/* Feature Styles */
+.features {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding: 30px 0;
+    flex-wrap: wrap;
+}
+
+.feature:hover{
+    cursor: pointer;
+    transform: scale(1.09);
+    transition: all 1s ease-in-out;
+    transition: all 1s ease-out
+}
+
+.feature {
+    text-align:center;
+    margin: 30px;
+    padding: 30px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    border-radius: 10px;
+    font-style:var(-webkit-sticky);
+}
+
+.feature img {
+    width: 212px;
+    height: 156px;
+    margin-bottom: 5px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.feature h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.feature {
+    font-size: 16px;
+}
+
+
+
+.footer {
+    background-color: rgb(5, 116, 176);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding: 10px 0
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:rgb(5, 116, 176);
+    position: -webkit-sticky;
+    position: sticky;
+    top: o;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: rgb(6, 154, 234);
+}
+
+
+li .dropdown {
+    display:inline-block;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color:rgb(193, 8, 8) ;
+    min-width: 160px;
+    box-shadow: 0px, 8px, 16px, 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+.dropdown-content a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover{
+    background-color: rgb(0, 0, 0);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+/*Pesona Ikan */
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+.container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+   
+}
+
+.card  {
+    background-color: rgb(255, 255, 255);
+    width: 270px;
+    height: 550px;
+    margin: 30px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    border-radius: 15px;
+
+}
+
+.card-image {
+    
+    height: 170px;
+    margin-bottom: 15px;
+    background-size: cover;
+    border-radius: 15px 15px 0 0;
+
+
+}
+
+.car-1{
+    background-image: url('https://i1.wp.com/www.mediamaya.net/wp-content/uploads/2016/08/Ikan-Badut-nemo-1.jpg?resize=1024%2C683&ssl=1');
+}
+
+.car-2{
+    background-image: url('https://mediatani.co/wp-content/uploads/2021/05/Kuda-laut.jpg');
+}
+
+.car-3{
+    background-image: url('https://th.bing.com/th/id/OIP.On3HBe6aUyC2-pYpxh6PKwHaE1?w=240&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7');
+
+}
+
+.car-4 {
+    background-image: url('https://images3.ratemyfishtank.com/photo/13/660x508c/30000/29538/12109-35-yellow-tang---hawaii-bg5c5Lt.jpg');
+}
+
+.car-5{
+    background-image: url('https://th.bing.com/th/id/R.74182c021ac2502661fa9ebeddced806?rik=soN4BZcmdflILQ&riu=http%3a%2f%2f4.bp.blogspot.com%2f_978pcU_Gq8A%2fTAVIbRbvNCI%2fAAAAAAAAAIk%2fDYz5DBlPbAA%2fs1600%2fBicolor%2bDamselfish.JPG&ehk=qt6VYbRDWRV1IqcIMBtCtH2n%2bU7lLss4EhVQHqofr%2fs%3d&risl=&pid=ImgRaw&r=0');
+}
+
+.car-6{
+    background-image: url('https://th.bing.com/th/id/R.ade3d23c19c0bf54f607e4bbc2f2b5ab?rik=WxnbPdgqC4%2f%2fEg&riu=http%3a%2f%2fphotos.imageevent.com%2fcodomo%2ffishes%2fbutterflyfishes%2fzancluscornutus%2fhuge%2fDSC09940.JPG&ehk=xfgjqoF8ZFYQNs7TX4fpcx1eVBI%2f2tvmUs1iAmW1G28%3d&risl=&pid=ImgRaw&r=0');
+}
+
+.card h2{
+    padding: 10px;
+}
+
+.card p{
+    padding: 10px;
+}
+
+.card a{
+    background-color: rgb(5, 116, 176);
+    color: white;
+    padding: 15px 20px;
+    display: block;
+    text-align: center;
+    margin: 20px 50px;
+    border-radius: 10px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.card a:hover{
+    background-color:  rgb(6, 154, 234);
+}
+
+.card:hover{
+    background-color: rgb(37, 37, 37);
+    color: white;
+    cursor: pointer;
+    transform: scale(1.03);
+    transition: all 1s ease-in-out;
+    transition: all 1s ease-out
+}
+
+
+/* Pesona Kerumbu Karang*/
+.karang-1{
+    background-image: url('https://th.bing.com/th/id/OIP.kLbPOIIyTZCxXR8ZPNDbhgHaEK?rs=1&pid=ImgDetMain')
+}
+
+.karang-2{
+    background-image: url('https://3.bp.blogspot.com/-uLDNB84m9QI/WAy--jeZO0I/AAAAAAAAJVc/bPhpTydHsycrf2E0-1dtwWpWeLlLVCFmwCLcB/s1600/Lighthouse_Reef_Belize1.jpg');
+}
+
+.karang-3{
+    background-image: url('https://i.pinimg.com/736x/72/c7/a0/72c7a06fe2c25c0aa5dab46c28cb2590--great-barrier-reef-la-grande.jpg');
+}
+
+.karang-4{
+    background-image: url('');
+}
+
+/*Pesona Pantai */
+.pantai-1{
+    background-image: url("https://th.bing.com/th/id/OIP.ZRFmZDT6uFPLSUGS8yPGXwHaEe?w=242&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7");
+}
+
+.pantai-2{
+    background-image: url("https://anekatempatwisata.com/wp-content/uploads/2015/08/Pantai-Pink-Pulau-Komodo.jpg");
+}
+
+.pantai-3{
+    background-image: url("https://wisatabagus.com/wp-content/uploads/2019/12/pantai-pandawa-bali.jpg")
+}
+
+.pantai-4{
+    background-image: url("https://th.bing.com/th/id/OIP.GUv-wKlfW28NZfTPFlYDVwHaEK?w=333&h=187&c=7&r=0&o=5&dpr=1.5&pid=1.7");
+}
+
+.pantai-5{
+    background-image: url("https://th.bing.com/th/id/OIP.lBOT2XWemAX2qaTX12Q2OgAAAA?w=288&h=192&c=7&r=0&o=5&dpr=1.5&pid=1.7");
+}
+
+.pantai-6{
+    background-image: url("https://th.bing.com/th/id/OIP.ZjLC3Bcxj5ix8t4d8PDPvwAAAA?rs=1&pid=ImgDetMain");
+}
+
+.pantai-7{
+    background-image: url("https://th.bing.com/th/id/OIP.L0U3IjVhpmrkjoHrzW_l0gHaDt?rs=1&pid=ImgDetMain");
+}
+
+.pantai-8{
+    background-image: url("https://1001indonesia.net/asset/2018/06/Pantai-Karang-Bolong-Pacitan-1.jpg");
+}
+
+.pantai-9{
+    background-image: url("https://th.bing.com/th/id/R.89a40f41d5c44b1ed1e855f2fe295d16?rik=FCsSg97WIF%2fRgA&riu=http%3a%2f%2fwww.travelordietrying.com%2fwp-content%2fuploads%2f2019%2f10%2fNature-wallpaper_Gili-Trawangan-01.jpg&ehk=1JNXZ30VgYxYZRRan02PualP2YDxpCgVHbj%2fJOViDr4%3d&risl=&pid=ImgRaw&r=0");
+}
+
+
+/*Profil*/
+
+
+
+.detel{
+    margin-left: 8%;
+    margin-top: 13%;
+}
+
+.detel h1{
+    font-size: 50px;
+    color: #212121;
+margin-bottom: 20px;
+}
+
+span{
+    color: rgb(5, 116, 176);
+}
+
+.detel p{
+    color: #555;
+    line-height: 22px;
+
+}
+
+.detel a{
+    background: rgb(5, 116, 176);
+    padding: 10px 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #ffff;
+    display: inline-block;
+    margin: 30px 0;
+    border-radius: 10px;
+}
+
+.detel a:hover{
+    background-color:rgb(6, 154, 234) ;
+}
+
+.images{
+    width: 45%;
+    height: 110%;
+    position: absolute;
+    bottom: 0;
+    right: 100px;
+}
+
+.images img{
+    height: 80%;
+    position: absolute;
+    left: 65%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: bottom 1s, left 1s;
+}
+
+.images:hover .shape{
+    bottom: 40px;
+
+}
+
+.images:hover .foto{
+    right: 45px;
+}
+
+.tabel{
+
+    display: inline-table
+}
+
+.tombol{
+    text-align: left;
+    margin-top: 30px;
+
+}
+
+.btna{
+    border: 1px solid #3498db;
+    background: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: "montserrat";
+    cursor: pointer;
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btna3{
+    color: #fff;
+}
+
+.btna3:hover{
+    color: #3498db;
+}
+
+.btna::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #3498db;
+    z-index: -1;
+    transition: 0.8s;
+}
+
+.btna3::before{
+    top: 0;
+    border-radius: 0 0 50% 50%;
+
+}
+
+.btna3::before{
+    height: 180%;
+}
+
+.btna3:hover{
+    height: 0%;
+}
+
+.contentt{
+    position: relative;
+    padding: 50px 50px 120px 80px;
+    max-width: 550px;
+}
+
+.contentt h2{
+    color: #fff;
+    font-size: 3em;
+}
+
+.contentt p{
+    color: #fff;
+}

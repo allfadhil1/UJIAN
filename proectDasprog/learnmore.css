@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.containerr{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: #222;
+
+}
+
+.containerr input{
+    appearance: none;
+}
+
+.containerr .dots{
+    position: absolute;
+    bottom: 70px;
+    z-index: 10000;
+    display: flex;
+    gap: 6px;
+}
+
+.containerr .dots label{
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 50%;
+    opacity: 0.5;
+    border: 2px solid #222;
+}
+
+.containerr input:nth-child(1):checked ~ .dots label:nth-child(1),
+.containerr input:nth-child(2):checked ~ .dots label:nth-child(2),
+.containerr input:nth-child(3):checked ~ .dots label:nth-child(3)
+{
+    opacity: 1;
+    
+}
+
+.containerr .slider{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.containerr .slider .slide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--img);
+    background-size: cover;
+    clip-path: circle(0% at 0% 50%);  
+    transition: 1.5s;
+    transition-delay: 0s; 
+    background-position: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.containerr .slider .slide:nth-child(even){
+    clip-path: circle(0% at 100% 50%);    
+    background-position: right; 
+}
+
+.containerr input:nth-child(1):checked ~ .slider .slide:nth-child(1),
+.containerr input:nth-child(2):checked ~ .slider .slide:nth-child(2),
+.containerr input:nth-child(3):checked ~ .slider .slide:nth-child(3){
+    clip-path: circle(150% at 50% 50%);
+    transition-delay: 1s;
+    background-position: center;
+}
+
+.content{
+    position: relative;
+    padding: 50px 50px 120px 80px;
+    max-width: 550px;
+}
+
+.content h2{
+    color: #fff;
+    font-size: 3em;
+}
+
+.content p{
+    color: #fff;
+}
+
+
+
+
+/*BUTTON BARU*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+.options a {
+    text-decoration: none;
+    color: white;
+    margin-left: auto;}
+
+.content a{
+    display: grid;
+    height: 50px;
+    width: 200px;
+    background: linear-gradient(
+        #3a64f0,
+        #4ce2ef
+    );
+    position:relative;
+    margin: auto;
+    left: -110px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    place-items: center;
+    font-family: "Poppins",sans-serif;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 3px;
+    border-radius: 5px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:rgb(5, 116, 176);
+    position: -webkit-sticky;
+    position: sticky;
+    top: o;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: rgb(6, 154, 234);
+}
+
+
+
+
+
+  /* The dropdown container */
+.dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  /* Dropdown button */
+  .dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+  }
+  
+  /* Add a red background color to navbar links on hover */
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+
