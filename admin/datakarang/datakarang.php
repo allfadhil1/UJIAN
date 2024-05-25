@@ -197,31 +197,31 @@ Data User</title>
 <body>
 <nav>
         <ul>
-            <li><a class="active" href="../proectDasprog/Project.php">Home</a></li>
-            <li><a href="../proectDasprog/ProjectProfil.php">Profil</a></li>
+            <li><a class="active" href="../../proectDasprog/Project.php">Home</a></li>
+            <li><a href="../../proectDasprog/ProjectProfil.php">Profil</a></li>
         
             <li><a href="#">Medsos</a></li>
      </div>
                
            
-            <li style="float: right;"><a href="../login.php">Login</a></li>
-            <li style="float: right;"><a href="../register.php">Register</a></li>
+            <li style="float: right;"><a href="../../login.php">Login</a></li>
+            <li style="float: right;"><a href="../../register.php">Register</a></li>
         </ul>
     </nav>
     <br>
     
     <h1></h1>
     <div class="content1">
-    <a  href="dataikan.php">Data Ikan</a>
+    <a  href="../dataikan/dataikan.php">Data Ikan</a>
     </div> 
     <div class="content2">
     <a  href="../datapantai/datapantai.php">Data Pantai</a>
     </div>
     <div class="content3">
-    <a  href="PesonaIkan.php">Data Karang</a>
+    <a  href="datakarang.php">Data Karang</a>
     </div>
     <div class="content4">
-    <a  href="../saran/admin_page.php">Saran</a>
+    <a  href="../saran1/admin_page.php">Saran</a>
     </div>
     <div class="content5">
     <a  href="../datauser.php">Data User</a>

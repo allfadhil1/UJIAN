@@ -197,15 +197,15 @@ Data User</title>
 <body>
 <nav>
         <ul>
-            <li><a class="active" href="../proectDasprog/Project.php">Home</a></li>
-            <li><a href="../proectDasprog/ProjectProfil.php">Profil</a></li>
+            <li><a class="active" href="../../proectDasprog/Project.php">Home</a></li>
+            <li><a href="../../proectDasprog/ProjectProfil.php">Profil</a></li>
         
             <li><a href="#">Medsos</a></li>
      </div>
                
            
-            <li style="float: right;"><a href="../login.php">Login</a></li>
-            <li style="float: right;"><a href="../register.php">Register</a></li>
+            <li style="float: right;"><a href="../../login.php">Login</a></li>
+            <li style="float: right;"><a href="../../register.php">Register</a></li>
         </ul>
     </nav>
     <br>
@@ -221,7 +221,7 @@ Data User</title>
     <a  href="../datakarang/datakarang.php">Data Karang</a>
     </div>
     <div class="content4">
-    <a  href="../saran/admin_page.php">Saran</a>
+    <a  href="../saran1/admin_page.php">Saran</a>
     </div>
     <div class="content5">
     <a  href="../datauser.php">Data User</a>

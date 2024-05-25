@@ -215,10 +215,10 @@ Data User</title>
     <a  href="dataikan/dataikan.php">Data Ikan</a>
     </div> 
     <div class="content2">
-    <a  href="PesonaIkan.php">Data Pantai</a>
+    <a  href="datapantai/datapantai.php">Data Pantai</a>
     </div>
     <div class="content3">
-    <a  href="PesonaIkan.php">Data Karang</a>
+    <a  href="datakarang/datakarang.php">Data Karang</a>
     </div>
     <div class="content4">
     <a  href="saran/admin_page.php">Saran</a>

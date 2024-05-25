@@ -16,7 +16,7 @@ if($cek > 0){
         $_SESSION['Username'] = $username;
         $_SESSION['Level'] == "ADMIN";
 
-        header("location:admin/index.php");
+        header("location:admin/datauser.php");
 
     }else if($data['Level']=="USER"){
 

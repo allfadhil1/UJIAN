@@ -25,21 +25,31 @@ if (isset($_GET['delete'])) {
 <body>
 <nav>
     <ul>
-        <li><a class="active" href="../proectDasprog/Project.php">Beranda</a></li>
-        <li><a href="../proectDasprog/ProjectProfil.php">Profil</a></li>
+        <li><a class="active" href="../../proectDasprog/Project.php">Beranda</a></li>
+        <li><a href="../../proectDasprog/ProjectProfil.php">Profil</a></li>
         <li><a href="#">Medsos</a></li>
-        <li style="float: right;"><a href="../login.php">Login</a></li>
-        <li style="float: right;"><a href="../register.php">Register</a></li>
+        <li style="float: right;"><a href="../../login.php">Login</a></li>
+        <li style="float: right;"><a href="../../register.php">Register</a></li>
     </ul>
 </nav>
 <br>
+<div class="content1">
+    <a  href="../dataikan/dataikan.php">Data Ikan</a>
+    </div> 
+    <div class="content2">
+    <a  href="../datapantai/datapantai.php">Data Pantai</a>
+    </div>
+    <div class="content3">
+    <a  href="../datakarang/datakarang.php">Data Karang</a>
+    </div>
+    <div class="content4">
+    <a  href="admin_page.php">Saran</a>
+    </div>
+    <div class="content5">
+    <a  href="../datauser.php">Data User</a>
+    </div>
 
-<div class="content1"><a href="../index.php">Data Ikan</a></div> 
-<div class="content2"><a href="PesonaIkan.php">Data Pantai</a></div>
-<div class="content3"><a href="PesonaIkan.php">Data Karang</a></div>
-<div class="content4"><a href="admin_page.php">Saran</a></div>
-<div class="content5"><a href="../datauser.php">Data User</a></div>
-<h1><center>DAFTAR SARAN</center></h1>
+<h1><center>DAFTAR SARAN IKAN, KARANG DAN PANTAI</center></h1>
 <div class="container">
     <?php
     $result = $conn->query("SELECT * FROM saran");
