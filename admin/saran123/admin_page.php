@@ -50,7 +50,37 @@ if(isset($_GET['delete'])){
 
 </head>
 <body>
-
+<nav>
+        <ul>
+            <li><a class="active" href="../proectDasprog/Project.php">Home</a></li>
+            <li><a href="../proectDasprog/ProjectProfil.php">Profil</a></li>
+        
+            <li><a href="#">Medsos</a></li>
+     </div>
+               
+           
+            <li style="float: right;"><a href="../login.php">Login</a></li>
+            <li style="float: right;"><a href="../register.php">Register</a></li>
+        </ul>
+    </nav>
+    <br>
+    
+    <h1></h1>
+    <div class="content1">
+    <a  href="../index.php">Data Ikan</a>
+    </div> 
+    <div class="content2">
+    <a  href="PesonaIkan.php">Data Pantai</a>
+    </div>
+    <div class="content3">
+    <a  href="PesonaIkan.php">Data Karang</a>
+    </div>
+    <div class="content4">
+    <a  href="admin_page.php">Saran</a>
+    </div>
+    <div class="content5">
+    <a  href="../datauser.php">Data User</a>
+    </div>
 <?php
 
 if(isset($message)){
@@ -60,7 +90,7 @@ if(isset($message)){
 }
 
 ?>
-   
+    <h4><center></center></h4>
 <div class="container">
 
    <div class="admin-product-form-container">

@@ -58,12 +58,142 @@ li .dropdown {
     display: block;
 }
 
+.options a {
+    text-decoration: none;
+    color: white;
+    margin-left: auto;}
+
+.content1 a{
+    display: grid;
+    height: 40px;
+    width: 150px;
+    background: linear-gradient(
+        #3a64f0,
+        #4ce2ef
+    );
+    position:relative;
+    margin: auto;
+    left: -200px;
+    right: 0;
+    top: 20px;
+    bottom: 0;
+    place-items: center;
+    font-family: "Poppins",sans-serif;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 3px;
+    border-radius: 5px;
+}
+
+.content2 a{
+    display: grid;
+    height: 40px;
+    width: 150px;
+    background: linear-gradient(
+        #3a64f0,
+        #4ce2ef
+    );
+    position:relative;
+    margin: auto;
+    left: 0px;
+    right: 0;
+    top: -20px;
+    bottom: 0;
+    place-items: center;
+    font-family: "Poppins",sans-serif;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 3px;
+    border-radius: 5px;
+}
+
+.content3 a{
+    display: grid;
+    height: 40px;
+    width: 150px;
+    background: linear-gradient(
+        #3a64f0,
+        #4ce2ef
+    );
+    position:relative;
+    margin: auto;
+    left: 200px;
+    right: 0;
+    top: -60px;
+    bottom: 10;
+    place-items: center;
+    font-family: "Poppins",sans-serif;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 3px;
+    border-radius: 5px;
+}
+
+.content4 a{
+    display: grid;
+    height: 40px;
+    width: 150px;
+    background: linear-gradient(
+        #3a64f0,
+        #4ce2ef
+    );
+    position:relative;
+    margin: auto;
+    left: 400px;
+    right: 0;
+    top: -100px;
+    bottom: 10;
+    place-items: center;
+    font-family: "Poppins",sans-serif;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 3px;
+    border-radius: 5px;
+}
+
+.content5 a{
+    display: grid;
+    height: 40px;
+    width: 150px;
+    background: linear-gradient(
+        #3a64f0,
+        #4ce2ef
+    );
+    position:relative;
+    margin: auto;
+    left: -400px;
+    right: 0;
+    top: -140px;
+    
+    place-items: center;
+    font-family: "Poppins",sans-serif;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 3px;
+    border-radius: 5px;
+}
+
+.head {
+    display: ;
+    position: center;
+    font-size: 9px;
+}
 
 
 </style>
 </head>
 <title>
-    Admin</title>
+Data User</title>
 <body>
 <nav>
         <ul>
@@ -71,18 +201,36 @@ li .dropdown {
             <li><a href="../proectDasprog/ProjectProfil.php">Profil</a></li>
         
             <li><a href="#">Medsos</a></li>
-</div>
+     </div>
                
            
             <li style="float: right;"><a href="../login.php">Login</a></li>
             <li style="float: right;"><a href="../register.php">Register</a></li>
         </ul>
     </nav>
-   
-<div class="container">
     <br>
+    
+    <h1></h1>
+    <div class="content1">
+    <a  href="dataikan/dataikan.php">Data Ikan</a>
+    </div> 
+    <div class="content2">
+    <a  href="PesonaIkan.php">Data Pantai</a>
+    </div>
+    <div class="content3">
+    <a  href="PesonaIkan.php">Data Karang</a>
+    </div>
+    <div class="content4">
+    <a  href="saran/admin_page.php">Saran</a>
+    </div>
+    <div class="content5">
+    <a  href="datauser.php">Data User</a>
+    </div>
+
+<div class="container">
+   
     <h4><center>DAFTAR USER</center></h4>
-<?php
+   <?php
 
     include "../koneksi.php";
 

@@ -58,7 +58,7 @@ $result = mysqli_query($mysql,
 "INSERT INTO user(Nama_Depan,Nama_Belakang,Username, Password, Level) VALUES ('$namadepans','$namabelakangs','$usernames', '$passwords', '$levels')");
 // Show message when user added
 // echo "Data added successfully. <a href='index.php'>View Data Buku</a>"; 
-header("location: index.php");
+header("location: proectDasprog/Project.php");
 }
 ?>
             </form>

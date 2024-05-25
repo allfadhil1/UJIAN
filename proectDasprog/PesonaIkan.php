@@ -18,6 +18,7 @@
            
             <li style="float: right;"><a href="../login.php">Login</a></li>
             <li style="float: right;"><a href="../register.php">Register</a></li>
+            <li><a class="active" href="user_form.php">Saran</a></li>
         </ul>
     </nav>
     
