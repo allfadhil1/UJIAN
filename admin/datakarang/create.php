@@ -3,8 +3,66 @@
 <head>
     <title>Form Pendaftaran Peserta</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(5, 116, 176);
+            position: sticky;
+            top: 0;
+        }
+        li {
+            float: left;
+        }
+        li a {
+            display: block;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li a:hover {
+            background-color: rgb(6, 154, 234);
+        }
+        li .dropdown {
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgb(193, 8, 8);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: rgb(0, 0, 0);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
 </head>
 <body>
+<nav>
+    <ul>
+        <li><a class="active" href="../../proectDasprog/Project.php">Home</a></li>
+        <li><a href="../../proectDasprog/ProjectProfil.php">Profil</a></li>
+        <li><a href="#">Medsos</a></li>
+        <li style="float: right;"><a href="../../login.php">Login</a></li>
+        <li style="float: right;"><a href="../../register.php">Register</a></li>
+    </ul>
+</nav>
+<br> <br>
 <div class="container">
     <?php
     // Include file koneksi, untuk menghubungkan ke database
@@ -23,25 +81,31 @@
 
         $nama_karang = input($_POST["nama_karang"]);
         $jenis = input($_POST["jenis"]);
+        
+        $Gambar = $_FILES['gambar']['name'];
+        $Gambar_tmp_nama = $_FILES['gambar']['tmp_name'];
+        $Gambar_folder = 'uploaded_img/' . $Gambar;
+        $deskripsi = input($_POST["deskripsi"]);
         $website = input($_POST["website"]);
 
-        // Query untuk menginput data ke dalam tabel pantai
-        $sql = "INSERT INTO karang (nama_karang, jenis, website) VALUES ('$nama_karang', '$jenis', '$website')";
-
-        // Mengeksekusi/menjalankan query di atas
-        $hasil = mysqli_query($conn, $sql); // $conn adalah variabel koneksi database
-
-        // Kondisi apakah berhasil atau tidak dalam mengeksekusi query di atas
-        if ($hasil) {
-            header("Location: datakarang.php");
+        // Query untuk menginput data ke dalam tabel karang
+        $sql = "INSERT INTO karang (nama_karang, jenis, gambar, deskripsi, website) VALUES ('$nama_karang', '$jenis', '$Gambar', '$deskripsi', '$website')";
+        
+        if (mysqli_query($conn, $sql)) {
+            // Jika berhasil memasukkan data, pindahkan gambar ke folder yang ditentukan
+            move_uploaded_file($Gambar_tmp_nama, $Gambar_folder);
+            header("Location:datakarang.php");
+            echo "<div class='alert alert-success'> Data berhasil disimpan.</div>";
+            // Kosongkan nilai input setelah pengiriman sukses
+            $_POST['nama_karang'] = $_POST['jenis'] = $_POST['deskripsi'] = $_POST['website'] ='';
         } else {
             echo "<div class='alert alert-danger'> Data Gagal disimpan.</div>";
         }
     }
     ?>
-    <h2>Input Data</h2>
+    <h2>Input Data Karang</h2><br>
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>Nama Karang:</label>
             <input type="text" name="nama_karang" class="form-control" placeholder="Masukan Nama Karang" required />
@@ -50,11 +114,20 @@
             <label>Jenis:</label>
             <input type="text" name="jenis" class="form-control" placeholder="Masukan Jenis" required/>
         </div>
+        <div class="form-group">
+            <label for="gambar">Gambar:</label><br>
+            <input type="file" id="gambar" name="gambar" class="input-field" accept="image/png, image/jpeg, image/jpg" required>
+        </div>
+        <div class="form-group">
+            <label>Deskripsi:</label>
+            <input type="text" name="deskripsi" class="form-control" placeholder="Masukan Deskripsi" required/>
+        </div>
        <div class="form-group">
             <label>Website :</label>
             <input type="text" name="website" class="form-control" placeholder="Masukan Website" required/>
-        </div>
+        </div><br>
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        <a href="datakarang.php" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 </body>

@@ -3,9 +3,66 @@
 <head>
     <title>Update</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(5, 116, 176);
+            position: sticky;
+            top: 0;
+        }
+        li {
+            float: left;
+        }
+        li a {
+            display: block;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li a:hover {
+            background-color: rgb(6, 154, 234);
+        }
+        li .dropdown {
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgb(193, 8, 8);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: rgb(0, 0, 0);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
 </head>
 <body>
+<nav>
+    <ul>
+        <li><a class="active" href="../../proectDasprog/Project.php">Home</a></li>
+        <li><a href="../../proectDasprog/ProjectProfil.php">Profil</a></li>
+        <li><a href="#">Medsos</a></li>
+        <li style="float: right;"><a href="../../login.php">Login</a></li>
+        <li style="float: right;"><a href="../../register.php">Register</a></li>
+    </ul>
+</nav>
+<br> <br>
 <div class="container">
     <?php
 
@@ -64,7 +121,7 @@
     }
 
     ?>
-    <h2>Update Data</h2>
+    <h2>Update Data User</h2><br>
 
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
@@ -101,6 +158,7 @@
         <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>" />
 
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        <a href="datauser.php" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 </body>

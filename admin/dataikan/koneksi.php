@@ -5,9 +5,12 @@ $user="root";
 $password="";
 $db="dasprog";
 
-$kon = mysqli_connect($host,$user,$password,$db);
-if (!$kon){
-        die("Koneksi Gagal:".mysqli_connect_error());
-        
+
+// Membuat koneksi
+$conn = new mysqli($host, $user, $password, $db);
+
+// Memeriksa koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
 }
 ?>

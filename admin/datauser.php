@@ -241,15 +241,7 @@ Data User</title>
         $sql="delete from user where ID='$id' ";
         $hasil=mysqli_query($mysql,$sql);
 
-        //Kondisi apakah berhasil atau tidak
-            if ($hasil) {
-                header("Location:index.php");
-
-            }
-            else {
-                echo "<div class='alert alert-danger'> Data Gagal dihapus.</div>";
-
-            }
+       
         }
 ?>
 

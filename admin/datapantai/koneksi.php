@@ -1,16 +1,15 @@
 <?php
+// koneksi.php
+$host = "localhost";
+$user = "root";
+$password = "";
+$db = "dasprog";
 
-$host="localhost";
-$user="root";
-$password="";
-$db="dasprog";
-
-
-// Membuat koneksi
+// Create connection
 $conn = new mysqli($host, $user, $password, $db);
 
-// Memeriksa koneksi
+// Check connection
 if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
+    die("Connection failed: " . $conn->connect_error);
+} 
 ?>

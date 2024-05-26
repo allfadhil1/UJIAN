@@ -1,11 +1,13 @@
 <?php
-
 @include 'config.php';
 
-$id = $_GET['edit'];
+$id = isset($_GET['edit']) ? $_GET['edit'] : null;
+
+if (!$id) {
+    die("Error: ID tidak ditentukan.");
+}
 
 if(isset($_POST['update_product'])){
-
    $Nama = $_POST['Nama'];
    $Jenis = $_POST['Jenis'];
    $Image = $_FILES['Image']['name'];
@@ -41,7 +43,6 @@ if(isset($_POST['update_product'])){
       }
    }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -53,20 +54,27 @@ if(isset($_POST['update_product'])){
    <title>Update Saran</title>
    <link rel="stylesheet" href="style.css">
    <style>
+      body, html {
+         margin: 0;
+         padding: 0;
+         height: 100%;
+         background-color: #f5f5f5;
+      }
       .container {
          display: flex;
          justify-content: center;
          align-items: center;
-         min-height: 100vh;
-         background-color: #f5f5f5;
+         min-height: 0px;
       }
       .admin-product-form-container {
          background-color: #fff;
-         padding: 20px;
+         padding: -20px 0px; /* Ubah padding untuk mengurangi ukuran atas dan bawah */
          border-radius: 8px;
          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-         max-width: 400px;
+         height: 20px;
          width: 100%;
+         max-width: 600px; /* Lebar maksimum lebih kecil */
+         box-sizing: border-box;
       }
       .message {
          display: block;
@@ -90,19 +98,78 @@ if(isset($_POST['update_product'])){
          background-color: #45a049;
       }
       .title {
-         margin-bottom: 20px;
+         margin-bottom: 10px; /* Kurangi margin bawah pada judul */
+         text-align: center;
       }
       .box {
-         width: calc(100% - 22px);
+         width: 100%;
          padding: 10px;
-         margin-bottom: 20px;
+         margin-bottom: 10px; /* Kurangi margin bawah pada input box */
          border: 1px solid #ccc;
          border-radius: 5px;
+         box-sizing: border-box;
       }
+   
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(5, 116, 176);
+            position: sticky;
+            top: 0;
+        }
+        li {
+            float: left;
+        }
+        li a {
+            display: block;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li a:hover {
+            background-color: rgb(6, 154, 234);
+        }
+        li .dropdown {
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgb(193, 8, 8);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: rgb(0, 0, 0);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    
    </style>
 </head>
 <body>
-
+<nav>
+    <ul>
+        <li><a class="active" href="../../proectDasprog/Project.php">Home</a></li>
+        <li><a href="../../proectDasprog/ProjectProfil.php">Profil</a></li>
+        <li><a href="#">Medsos</a></li>
+        <li style="float: right;"><a href="../../login.php">Login</a></li>
+        <li style="float: right;"><a href="../../register.php">Register</a></li>
+    </ul>
+</nav>
+<br> <br>
 <?php
    if(isset($message)){
       foreach($message as $msg){
@@ -110,29 +177,31 @@ if(isset($_POST['update_product'])){
       }
    }
 ?>
+<?php
+         $select = mysqli_query($conn, "SELECT * FROM saran WHERE ID = '$id'");
+         if($select && mysqli_num_rows($select) > 0) {
+            while($row = mysqli_fetch_assoc($select)){
+      ?>
 
 <div class="container">
-
-<div class="admin-product-form-container centered">
-
-   <?php
-      $select = mysqli_query($conn, "SELECT * FROM saran WHERE ID = '$id'");
-      while($row = mysqli_fetch_assoc($select)){
-   ?>
+   <div class="admin-product-form-container centered">
    
-   <form action="" method="post" enctype="multipart/form-data">
-      <h3 class="title">Update Saran</h3>
-      <input type="text" class="box" name="Nama" value="<?php echo htmlspecialchars($row['Nama']); ?>" placeholder="Masukkan Nama">
-      <input type="text" class="box" name="Jenis" value="<?php echo htmlspecialchars($row['Jenis']); ?>" placeholder="Masukkan Jenis">
-      <input type="file" class="box" name="Image" accept="image/png, image/jpeg, image/jpg">
-      <input type="submit" value="Update Saran" name="update_product" class="btn">
-      <a href="admin_page.php" class="btn">Kembali</a>
-   </form>
-
-   <?php }; ?>
-
-</div>
-
+      <form action="" method="post" enctype="multipart/form-data">
+         <h3 class="title">Update Saran</h3>
+         <input type="text" class="box" name="Nama" value="<?php echo htmlspecialchars($row['Nama']); ?>" placeholder="Masukkan Nama">
+         <input type="text" class="box" name="Jenis" value="<?php echo htmlspecialchars($row['Jenis']); ?>" placeholder="Masukkan Jenis">
+         <input type="file" class="box" name="Image" accept="image/png, image/jpeg, image/jpg">
+         <input type="submit" value="Update Saran" name="update_product" class="btn">
+         <a href="admin_page.php" class="btn">Kembali</a>
+      </form>
+   
+      <?php
+            }
+         } else {
+            echo '<p class="message">Data tidak ditemukan</p>';
+         }
+      ?>
+   </div>
 </div>
 
 </body>
