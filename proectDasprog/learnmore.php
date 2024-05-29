@@ -10,22 +10,123 @@
 
 <body>
 
-<nav>
-        <ul>
-            <li><a class="active" href="Project.php">Home</a></li>
-            <li><a href="ProjectProfil.php">Profil</a></li>
-        
-            <li><a href="#">Medsos</a></li>
-</div>
-               
+<header class="admin-header">
+        <div class="logo">
+            <a href="project.php">Hello User</a>
+        </div>
+        <nav class="nav-links">
+            <a href="project.php">Home</a>
+            <a href="ProjectProfil.php">Profil</a>
+            <a href="user_form.php">Saran</a>
            
-            <li style="float: right;"><a href="../login.php">Login</a></li>
-            <li style="float: right;"><a href="../register.php">Register</a></li>
-            <li><a class="active" href="user_form.php">Saran</a></li>
-        </ul>
+        </nav>
+        <div class="auth-links">
+            <a href="../login.php">Login</a>
+            <a href="../register.php">Register</a>
+        </div>
+        <style>
+            
+         
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0574B0;
+    color: #ffffff;
+}
 
-    </nav>
-    
+.logo a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 15px;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: #87ceeb;
+}
+
+.auth-links {
+    display: flex;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 15px;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.auth-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.auth-links a:hover::after {
+    width: 100%;
+}
+
+.auth-links a:hover {
+    color: #87ceeb;
+}
+
+footer {
+            background-color: #0574B0;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+
+        </style>
+    </header>
 
    <div class="containerr">
     <input id="slide1" type="radio" name="group" checked>
@@ -72,4 +173,5 @@
    </div>
    
 </body>
+
 </html>

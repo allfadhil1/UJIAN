@@ -1,111 +1,253 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesona Pantai</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
     <link rel="stylesheet" type="text/css" href="2023.css">
+    <style>
+        .card-image img {
+            max-width: 100%; /* Maksimum lebar gambar adalah lebar kotak */
+            max-height: 100%; /* Maksimum tinggi gambar adalah tinggi kotak */
+            width: auto; /* Lebar gambar otomatis disesuaikan */
+            height: auto; /* Tinggi gambar otomatis disesuaikan */
+            display: block; /* Agar gambar tetap dalam kotak */
+            margin: 0 auto; /* Posisi gambar di tengah kotak */
+            border-top-left-radius: 10px; /* Radius sudut kiri atas */
+            border-top-right-radius: 10px; /* Radius sudut kanan atas */
+            object-fit: cover; /* Gambar akan di-stretch untuk mengisi kotak */
+            height: 100%; /* Tinggi gambar mengisi kotak sepenuhnya */
+            width: 100%; /* Lebar gambar mengisi kotak sepenuhnya */
+        }
+
+        h1 {
+            font-family: 'Monserrat', cursive;
+            font-size: 3em;
+            color: #0056b3;
+            text-shadow: 2px 2px #d1e0ff;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 0px solid #000; /* Menebalkan garis hitam pada box */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 10px rgba(0, 0, 0); /* Menambahkan box shadow */
+            margin: 20px;
+            padding: 20px;
+            height: 100%;
+            transition: background-color 0.3s, color 0.3s; /* Menambahkan transisi untuk perubahan warna */
+            background-color: rgb(255, 255, 255);
+            width: 300px;
+            height: 650px;
+    margin: 30px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    border-radius: 15px;
+
+        }
+
+        .card h2 {
+            margin-top: 0px;
+            font-size: 1.3em;
+            color: #333;
+            transition: color 0.3s; /* Menambahkan transisi untuk perubahan warna */
+            font-family: 'Monserrat', cursive;
+        }
+
+        .card p {
+            flex-grow: 1;
+            margin-top: 0px;
+            color: #666;
+            transition: color 0.3s; /* Menambahkan transisi untuk perubahan warna */
+            font-family: 'Monserrat', cursive;
+        }
+
+        .card a {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            background-color: #0056b3;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .card:hover {
+            background-color: #333; /* Mengubah background menjadi abu-abu gelap saat pointer menyentuh kartu */
+            color: white; /* Mengubah warna font menjadi putih */
+        }
+
+        .card:hover h2,
+        .card:hover p {
+            color: white; /* Mengubah warna font menjadi putih saat pointer menyentuh kartu */
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-<nav>
-        <ul>
-            <li><a class="active" href="Project.php">Home</a></li>
-            <li><a href="ProjectProfil.php">Profil</a></li>
-        
-            <li><a href="#">Medsos</a></li>
-</div>
-               
+<header class="admin-header">
+        <div class="logo">
+            <a href="project.php">Hello User</a>
+        </div>
+        <nav class="nav-links">
+            <a href="project.php">Home</a>
+            <a href="ProjectProfil.php">Profil</a>
+            <a href="user_form.php">Saran</a>
            
-            <li style="float: right;"><a href="../login.php">Login</a></li>
-            <li style="float: right;"><a href="../register.php">Register</a></li>
-            <li><a class="active" href="user_form.php">Saran</a></li>
-        </ul>
-    </nav>
-    <div class="hero">
-    <section class="container">
-        <div class="card">
-            <div class="card-image pantai-1"></div>
-            <h2>Pantai Batu Bengkung</h2>
-            <p>Pantai Batu Bengkung, salah satu pantai di Malang Selatan yang sangat unik, dimana kamu akan menyaksikan bukit-bukit yang cukup dominan.
-Pantai Batu Bengkung menambah kekayaan pariwisata Malang. Pantai unik ini terletak di Desa Gajahrejo, yang pada saat ini menjadi salah satu cagar alam yang dilindungi.
-                </p> <br> <br>
-            <a href="https://www.bing.com/ck/a?!&&p=c1258c766a2d296bJmltdHM9MTcwMTEyOTYwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTIyMg&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=pantai+batu+bengkung+malang&u=a1aHR0cHM6Ly93d3cubmF0aXZlaW5kb25lc2lhLmNvbS9wYW50YWktYmF0dS1iZW5na3VuZy8&ntb=1">Read More</a>
+        </nav>
+        <div class="auth-links">
+            <a href="../login.php">Login</a>
+            <a href="../register.php">Register</a>
         </div>
-  
-        <div class="card">
-            <div class="card-image pantai-2"></div>
-            <h2>Pantai Pink</h2>
-            <p>Pantai Pink atau Pantai Tangsi merupakan pantai yang terletak di desa Sekaroh, kecamatan Jerowaru, Kabupaten Lombok Timur. Pantai ini dikenal dengan sebutan Pantai Pink dari Pulau Lombok. Karena pantai ini merupakan salah satu dari tujuh pantai di dunia yang memiliki pasir pantai berwarna pink dan satu dari dua pantai di Indonesia yang memiliki pasir pink.</p>
-            <br>
-            <a href="https://www.bing.com/ck/a?!&&p=e7a817f08a7b1808JmltdHM9MTcwMTEyOTYwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTE5OQ&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=pantai+pink&u=a1aHR0cHM6Ly9pZC53aWtpcGVkaWEub3JnL3dpa2kvUGFudGFpX1RhbmdzaQ&ntb=1">Read More</a>
-        </div>
-   
-        <div class="card">
-            <div class="card-image pantai-3"></div>
-            <h2>Pantai Pandawa</h2>
-            <p>Pantai Pandawa adalah salah satu tempat wisata di area Kuta selatan, Kabupaten Badung, Bali. Pantai ini terletak di balik perbukitan dan sering disebut sebagai Pantai Rahasia (Secret Beach). Di sekitar pantai ini terdapat dua tebing yang sangat besar yang pada salah satu sisinya dipahat lima patung Pandawa dan Kunti.</p>
-        <br> <br>
-            <a href="https://www.bing.com/ck/a?!&&p=3c48db9fd68acc2aJmltdHM9MTcwMTEyOTYwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTIyNw&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=pantai+pandawa&u=a1aHR0cHM6Ly9pZC53aWtpcGVkaWEub3JnL3dpa2kvUGFudGFpX1BhbmRhd2E&ntb=1">Read More</a>
-        
-        </div>
-        <div class="card">
-            <div class="card-image pantai-4"></div>
-            <h2>Pantai Kuta</h2>
-            <p>Pantai Kuta merupakan salah satu pantai terindah di Bali yang menjadi ikon wisata Bali. Pantai ini memiliki pasir putih dengan ombak bersahabat. Ombaknya tenang tapi juga cukup tinggi sehingga ideal untuk surfing.
+        <style>
+     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-                Sementara, fasilitasnya lengkap
-                Di tepi pantai, ada pohon-pohon kelapa dan pepohonan hijau lainnya. Suasana pun bertambah segar karenanya. Aktivitas favorit selain surfing adalah menikmati sunset yang cantik di Kuta.</p>
-        
-            <a href="https://www.bing.com/ck/a?!&&p=0803bb56f8ec7917JmltdHM9MTcwMTEyOTYwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTIxOQ&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=pantai+kuta&u=a1aHR0cHM6Ly9pZC53aWtpcGVkaWEub3JnL3dpa2kvUGFudGFpX0t1dGE&ntb=1">Read More</a>
-        
-        </div>
-        <div class="card">
-            <div class="card-image pantai-5"></div>
-            <h2>Pantai Ora</h2>
-            <p>Pantai Ora adalah suatu pantai yang terletak Pulau Seram, kecamatan Seram Utara, Maluku Tengah, Maluku, Indonesia. Pantai yang berlokasi di ujung barat teluk Sawai. di tepi hutan Taman Nasional Manusela. Pantai Ora memiliki karakteristik pantai yang berpasir putih dengan air yang sangat jernih dan tenang dengan kekayaan terumbu karang, ikan dan aneka ragam biota laut lainnya. </p>
-        
-            <a href="https://www.bing.com/ck/a?!&&p=cffebb953af8ca28JmltdHM9MTcwMTM4ODgwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTIyNg&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=pantai+ora&u=a1aHR0cHM6Ly9pZC53aWtpcGVkaWEub3JnL3dpa2kvUGFudGFpX09yYQ&ntb=1">Read More</a>
-        
-        </div>
-        <div class="card">
-            <div class="card-image pantai-6"></div>
-            <h2>Pantai Kelingking</h2>
-            <p>Pantai Kelingking atau Kelingking Beach menjadi salah satu objek wisata yang paling menarik perhatian di Nusa Penida, Klungkung, Bali. Pantai Kelingking terletak di Desa Bunga Mekar, Kecamatan Nusa Penida.
-                Pantai Kelingking berada pada posisi di ujung selatan Nusa Penida. Suguhan pemandangan tebing yang menjorok ke laut dengan pantai pasir putihnya, sangat mempesona dan menjadi daya tarik untuk dikunjungi.
-              </p>
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
 
-            <a href="https://www.bing.com/ck/a?!&&p=84d6fef92f0eb791JmltdHM9MTcwMTM4ODgwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTIyMQ&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=pantai+kelingking&u=a1aHR0cHM6Ly9udXNhcGVuaWRhLm9yZy9pZC9rZWxpbmdraW5nLWJlYWNoLw&ntb=1">Read More</a>
-        
-        </div>
-        <div class="card">
-            <div class="card-image pantai-7"></div>
-            <h2>Pantai Goa Cina</h2>
-            <p>Pantai Goa Cina adalah sebuah pantai di pesisir selatan yang terletak di Dusun Tumpak Awu, Desa Sitiarjo, Kecamatan Sumbermanjing Wetan, Kabupaten Malang, Jawa Timur. Nama asli dari pantai ini adalah Pantai Rowo Indah. Namun karena pernah terjadi peristiwa kematian seorang Tionghoa yang sedang bertapa di dalam goa yang ada di kawasan pantai ini, nama Rowo Indah diganti dengan Goa Cina.</p>
-    
-            <a href="https://www.bing.com/ck/a?!&&p=a2b303c3c60798efJmltdHM9MTcwMTM4ODgwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTUxNg&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=pantai+goa+cina&u=a1aHR0cHM6Ly9pZC53aWtpcGVkaWEub3JnL3dpa2kvUGFudGFpX0dvYV9DaW5hIzp-OnRleHQ9UGFudGFpJTIwR29hJTIwQ2luYSUyMGFkYWxhaCUyMHNlYnVhaCUyMHBhbnRhaSUyMGRpJTIwcGVzaXNpcixhc2xpJTIwZGFyaSUyMHBhbnRhaSUyMGluaSUyMGFkYWxhaCUyMFBhbnRhaSUyMFJvd28lMjBJbmRhaC4&ntb=1">Read More</a>
-        
-        </div>
-        <div class="card">
-            <div class="card-image pantai-8"></div>
-            <h2>Pantai Karang Bolong</h2>
-            <p>Pantai Karang Bolong diambil dari karang yang besar dan berlubang ditengah nya atau bolong.. Karang Bolong merupakan karang besar yang berlubang di tengahnya, menurut perkiraan para ahli, diperkirakan akibat letusan gunung Krakatau pada tahun 1883. Pantai Karang Bolong berbentuk lengkung yang sangat lebar dan menghadap langsung ke laut lepas.</p>
-        <br>
-            <a href="https://www.bing.com/ck/a?!&&p=5bf6ed7f5999def9JmltdHM9MTcwMTM4ODgwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTUxNg&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=pantai+karang+bolong&u=a1aHR0cHM6Ly9pZC53aWtpcGVkaWEub3JnL3dpa2kvUGFudGFpX0thcmFuZ2JvbG9uZyM6fjp0ZXh0PVBhbnRhaSUyMEthcmFuZ2JvbG9uZyUyMGFkYWxhaCUyMHNhbGFoJTIwc2F0dSUyMG9iamVrJTIwd2lzYXRhJTIwcGFudGFpLGJhdHVhbiUyMHNlZGltZW4lMjBrbGFzdGlrJTIweWFuZyUyMGJlcmFzYWwlMjBkYXJpJTIwZ3VudW5nJTIwYXBpLg&ntb=1">Read More</a>
-        
-        </div>
-        <div class="card">
-            <div class="card-image pantai-9"></div>
-            <h2>Pantai Gili Trawangan</h2>
-            <p>Gili Trawangan. Nama tempat ini cukup dikenal di kalangan wisatawan luar dan lokal. Tempat wisata ini memang cukup mudah buat di jangkau dari Bali.
 
-                Gili Trawangan merupakan pulau kecil (gili) yang ada di sebelah barat laut pulau Lombok. Pulau ini bisa dikatakan pulau terbesar dari gususan tiga gili (pulau kecil) yang ada disini. Pulau lainnya adalah gili meno dan gili air.</p>
-<br>
-            <a href="https://www.bing.com/ck/a?!&&p=f882ca727c873565JmltdHM9MTcwMTM4ODgwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTI3NA&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=pantai+gili+trawangan&u=a1aHR0cHM6Ly9pZC53aWtpcGVkaWEub3JnL3dpa2kvR2lsaV9UcmF3YW5nYW4&ntb=1">Read More</a>
-        
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0574B0;
+    color: #ffffff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 15px;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: #87ceeb;
+}
+
+.auth-links {
+    display: flex;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 15px;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.auth-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.auth-links a:hover::after {
+    width: 100%;
+}
+
+.auth-links a:hover {
+    color: #87ceeb;
+}
+
+footer {
+            background-color: #0574B0;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+
+        </style>
+    </header>
+<br><br><br><br>
+<h1><center>DAFTAR PANTAI</center></h1><br>
+<section class="container">
+    <?php
+    include '../koneksi.php';
+    $query_mysql = mysqli_query($mysql, "SELECT * FROM pantai") or die(mysqli_error($mysql));
+    while($data = mysqli_fetch_array($query_mysql)) {
+    ?>
+    <div class="card">
+        <div class="card-image">
+            <img src="../admin/datakarang/uploaded_img/<?php echo $data['gambar']; ?>" alt="<?php echo $data['nama_pantai']; ?>">
         </div>
-      
-    
-    </section>
-    
+        <h2><?php echo $data['nama_pantai']; ?></h2>
+        <p><?php echo $data['deskripsi']; ?></p>
+        <a href="<?php echo $data['website']; ?>">Read More</a>
+    </div>
+    <?php } ?>
+</section>
+<footer>
+        <p>&copy; 2024 Allfadhil_. All rights reserved.</p>
+        <p>
+            <a href="Project.php">Home</a> | 
+            <a href="https://sites.google.com/view/allfadhil/beranda">About Me</a> | 
+            <a href="ProjectProfil.php">Profil</a>
+        </p>
+    </footer>
 </body>
 </html>

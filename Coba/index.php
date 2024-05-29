@@ -1,33 +1,84 @@
-<?php
-// Create database connection using config file
-include_once("../koneksi.php");
- 
-// Fetch all users data from database
-$result = mysqli_query($mysqli, "SELECT * FROM ikan ORDER BY ikan DESC");
-?>
- 
-<html>
-<head>    
-    <title>Homepage</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.auth-links {
+    display: flex;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 15px;
+    font-size: 16px;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+    </style>
 </head>
- 
 <body>
-<a href="add.php">Add New User</a><br/><br/>
- 
-    <table width='80%' border=1>
- 
-    <tr>
-        <th>Name</th> <th>Mobile</th> <th>Email</th> <th>Update</th>
-    </tr>
-    <?php  
-    while($user_data = mysqli_fetch_array($result)) {         
-        echo "<tr>";
-        echo "<td>".$user_data['nama_ikan']."</td>";
-        echo "<td>".$user_data['jenis_ikan']."</td>";
-        echo "<td>".$user_data['umur_ikan']."</td>";    
-        echo "<td><a href='edit.php?id=$user_data[id]'>Edit</a> | <a href='delete.php?id=$user_data[id]'>Delete</a></td></tr>";        
-    }
-    ?>
-    </table>
+    <header class="admin-header">
+        <div class="logo">
+            <a href="#">AdminPanel</a>
+        </div>
+        <nav class="nav-links">
+            <a href="#">Dashboard</a>
+            <a href="#">Users</a>
+            <a href="#">Settings</a>
+            <a href="#">Reports</a>
+            <a href="#">Reports</a>
+        </nav>
+        <div class="auth-links">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div>
+    </header>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

@@ -348,3 +348,86 @@ li .dropdown {
    position: center;
    font-size: 9px;
 }
+
+           
+.admin-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px 20px;
+   background-color: #0574B0;
+   color: #ffffff;
+}
+
+.logo a {
+   text-decoration: none;
+   color: #ffffff;
+   font-size: 24px;
+   font-weight: bold;
+}
+
+.nav-links {
+   display: flex;
+}
+
+.nav-links a {
+   text-decoration: none;
+   color: #ffffff;
+   margin: 0 15px;
+   font-size: 16px;
+   position: relative;
+   transition: color 0.3s;
+}
+
+.nav-links a::after {
+   content: '';
+   display: block;
+   width: 0;
+   height: 2px;
+   background: #ffffff;
+   transition: width 0.3s;
+   position: absolute;
+   bottom: -5px;
+   left: 0;
+}
+
+.nav-links a:hover::after {
+   width: 100%;
+}
+
+.nav-links a:hover {
+   color: #87ceeb;
+}
+
+.auth-links {
+   display: flex;
+}
+
+.auth-links a {
+   text-decoration: none;
+   color: #ffffff;
+   margin-left: 15px;
+   font-size: 16px;
+   position: relative;
+   transition: color 0.3s;
+}
+
+.auth-links a::after {
+   content: '';
+   display: block;
+   width: 0;
+   height: 2px;
+   background: #ffffff;
+   transition: width 0.3s;
+   position: absolute;
+   bottom: -5px;
+   left: 0;
+}
+
+.auth-links a:hover::after {
+   width: 100%;
+}
+
+.auth-links a:hover {
+   color: #87ceeb;
+}

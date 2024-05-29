@@ -1,92 +1,256 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesona Ikan</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
     <link rel="stylesheet" type="text/css" href="2023.css">
+    <style>
+        .card-image img {
+            max-width: 100%; /* Maksimum lebar gambar adalah lebar kotak */
+            max-height: 100%; /* Maksimum tinggi gambar adalah tinggi kotak */
+            width: auto; /* Lebar gambar otomatis disesuaikan */
+            height: auto; /* Tinggi gambar otomatis disesuaikan */
+            display: block; /* Agar gambar tetap dalam kotak */
+            margin: 0 auto; /* Posisi gambar di tengah kotak */
+            border-top-left-radius: 10px; /* Radius sudut kiri atas */
+            border-top-right-radius: 10px; /* Radius sudut kanan atas */
+            object-fit: cover; /* Gambar akan di-stretch untuk mengisi kotak */
+            height: 100%; /* Tinggi gambar mengisi kotak sepenuhnya */
+            width: 100%; /* Lebar gambar mengisi kotak sepenuhnya */
+        }
+
+        h1 {
+            font-family: 'Monserrat', cursive;
+            font-size: 3em;
+            color: #0056b3;
+            text-shadow: 2px 2px #d1e0ff;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 0px solid #000; /* Menebalkan garis hitam pada box */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 10px rgba(0, 0, 0); /* Menambahkan box shadow */
+            margin: 20px;
+            padding: 20px;
+            height: 100%;
+            transition: background-color 0.3s, color 0.3s; /* Menambahkan transisi untuk perubahan warna */
+            background-color: rgb(255, 255, 255);
+            width: 300px;
+            height: 640px;
+    margin: 30px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    border-radius: 15px;
+
+        }
+
+        .card h2 {
+            margin-top: 0px;
+            font-size: 1.3em;
+            color: #333;
+            transition: color 0.3s; /* Menambahkan transisi untuk perubahan warna */
+            font-family: 'Monserrat', cursive;
+        }
+
+        .card p {
+            flex-grow: 1;
+            margin-top: 0px;
+            color: #666;
+            transition: color 0.3s; /* Menambahkan transisi untuk perubahan warna */
+            font-family: 'Monserrat', cursive;
+        }
+
+        .card a {
+            font-family: 'Monserrat', cursive;
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            background-color: #0574b0;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .card:hover {
+            background-color: #333; /* Mengubah background menjadi abu-abu gelap saat pointer menyentuh kartu */
+            color: white; /* Mengubah warna font menjadi putih */
+        }
+
+        .card:hover h2,
+        .card:hover p {
+            color: white; /* Mengubah warna font menjadi putih saat pointer menyentuh kartu */
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-<nav>
-        <ul>
-            <li><a class="active" href="Project.php">Home</a></li>
-            <li><a href="ProjectProfil.php">Profil</a></li>
-        
-            <li><a href="#">Medsos</a></li>
-</div>
-               
+<header class="admin-header">
+        <div class="logo">
+            <a href="project.php">Hello User</a>
+        </div>
+        <nav class="nav-links">
+            <a href="project.php">Home</a>
+            <a href="ProjectProfil.php">Profil</a>
+            <a href="user_form.php">Saran</a>
            
-            <li style="float: right;"><a href="../login.php">Login</a></li>
-            <li style="float: right;"><a href="../register.php">Register</a></li>
-            <li><a class="active" href="user_form.php">Saran</a></li>
-        </ul>
-    </nav>
-    
-
-      </div>
-      <div class="hero">
-     <section class="container">
-        <div class="card">
-            <div class="card-image car-1"></div>
-            <h2>Ikan Nemo (ClownFish)</h2>
-            <p>Ikan Nemo (Ampihiprion ocellaris) merupakan salah satu  komoditas unggulan ikan hias air laut yang hidup di perairan trumbu karang dan bersimbiosis dengan anemon. Clownfish merupakan satu diantara 30 spesies anggota genus Amphirion, famili Pomacentridae. Clownfish merupakan jenis ikan hias air laut tropis dari familli pomancentridae yang hidup di trumbu karang dan terlindung hingga kedalaman 15m.
-            </p>
-            <a href="https://www.bing.com/ck/a?!&&p=8ef9927e609a7323JmltdHM9MTcxNDAwMzIwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTI3NQ&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=ikan+nemo&u=a1aHR0cHM6Ly9pZC53aWtpcGVkaWEub3JnL3dpa2kvSWthbl9naXJ1&ntb=1">Read More</a>
-  </div>
-  
-        <div class="card">
-            <div class="card-image car-2"></div>
-            <h2>Ikan Kuda (Seahorse)</h2>
-            <p>Ikan kuda adalah ikan terumbu karang yang memiliki bentuk tubuh yang unik dan menarik. Ikan ini memiliki kepala seperti kuda dan ekor yang melingkar. Ikan kuda hidup di sekitar terumbu karang dan rumput laut, serta dapat berubah warna untuk menyesuaikan diri dengan lingkungannya. Ikan kuda betina juga memiliki peran penting dalam reproduksi, karena betina yang mengeluarkan telur dan jantan yang membawanya sampai menetas.</p>
-            <a href="https://www.bing.com/ck/a?!&&p=c2993ce039283862JmltdHM9MTcwMDYxMTIwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTIxMw&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=ikan+kuda&u=a1aHR0cHM6Ly9pZC53aWtpcGVkaWEub3JnL3dpa2kvVGFuZ2t1cl9rdWRh&ntb=1">Read More</a>
+        </nav>
+        <div class="auth-links">
+            <a href="../login.php">Login</a>
+            <a href="../register.php">Register</a>
         </div>
-   
-        <div class="card">
-            <div class="card-image car-3"></div>
-            <h2>Ikan Kecil (Goby Fish)</h2>
-            <p>Ikan kecil adalah ikan terumbu karang yang memiliki ukuran tubuh yang kecil dan hidup di dasar laut. Ikan ini memiliki warna cerah seperti merah, kuning, hijau, dan biru, serta sering hidup dalam pasangan dengan udang atau kepiting. Ikan kecil juga memiliki kemampuan untuk bersembunyi di lubang-lubang kecil di terumbu karang, sehingga sulit ditemukan oleh predator.</p>
-            <br>
-            <a href="https://www.bing.com/ck/a?!&&p=e5f2302c718ca2c8JmltdHM9MTcwMDYxMTIwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTIxNg&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=goby+fish&u=a1aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvR29ieQ&ntb=1">Read More</a>
-        
+        <style>
+            
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
+
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0574B0;
+    color: #ffffff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 15px;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: #87ceeb;
+}
+
+.auth-links {
+    display: flex;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 15px;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.auth-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.auth-links a:hover::after {
+    width: 100%;
+}
+
+.auth-links a:hover {
+    color: #87ceeb;
+}
+
+footer {
+            background-color: #0574B0;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        </style>
+    </header>
+<br><br><br><br>
+<h1><center>DAFTAR IKAN</center></h1><br>
+<section class="container">
+    <?php
+    include '../koneksi.php';
+    $query_mysql = mysqli_query($mysql, "SELECT * FROM ikan") or die(mysqli_error($mysql));
+    while($data = mysqli_fetch_array($query_mysql)) {
+    ?>
+    <div class="card">
+        <div class="card-image">
+            <img src="../admin/dataikan/uploaded_img/<?php echo $data['gambar']; ?>" alt="<?php echo 
+                $data['nama_ikan']; ?>">
         </div>
-
-        <div class="card">
-            <div class="card-image car-4"></div>
-            <h2>Ikan Yellow Tang</h2>
-            <p>Ikan yellow tang merupakan salah satu jenis ikan yang hidup di terumbu karang yang menarik perhatian dengan warna kuning cerahnya. Spesies ini memiliki tubuh yang pipih dan oval dengan sirip ekor yang mencolok. Pada umumnya, mereka bisa ditemukan di perairan hangat di sekitar terumbu karang di Samudra Pasifik.</p>
-            <br>
-            <br>
-        
-            <a href="https://www.bing.com/ck/a?!&&p=444a7fe7a91672ecJmltdHM9MTcwMDYxMTIwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTI4Mw&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=ikan+yellow+tang&u=a1aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvWWVsbG93X3Rhbmc&ntb=1">Read More</a>
-        </div>
-  
-        <div class="card">
-            <div class="card-image car-5"></div>
-            <h2>Ikan Damselfish</h2>
-            <p>Ikan damselfish dapat ditemukan di perairan temperat, tropis, dan subtropis di seluruh dunia. Banyak damselfish yang ditemukan di terumbu karang populer sebagai hewan peliharaan akuarium laut. Mereka memiliki ukuran kecil, tahan lama, dan mudah dipelihara, sehingga menjadi pilihan populer untuk akuarium laut. Ikan karang ini kebanyakan memiliki warna cerah yang bervariasi</p>
-            <a href="https://www.bing.com/ck/a?!&&p=a413fd5877098dc7JmltdHM9MTcwMDYxMTIwMCZpZ3VpZD0xNjc2NmVkYi01MzgxLTZhNzUtMWRlNy03ZGI5NTJkNzZiODQmaW5zaWQ9NTIyNw&ptn=3&ver=2&hsh=3&fclid=16766edb-5381-6a75-1de7-7db952d76b84&psq=damsel+fish&u=a1aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRGFtc2VsZmlzaA&ntb=1">Read More</a>
-        </div>
-   
-        <div class="card">
-            <div class="card-image car-6"></div>
-            <h2>Ikan Butterflyfish</h2>
-            <p>Ikan butterflyfish alias ikan kupu-kupu dikenal karena menampilkan keindahan warna yang memukau dan sering kali memiliki sirip yang panjang dan mencolok. Mereka hidup dalam kelompok serta sering terlihat berenang di antara terumbu karang. Ikan kupu-kupu memakan zooplankton serta menjadi daya tarik bagi penyelam berkat kecantikannya.</p>
-            <br>
-            <br>
-            <a href="https://en.wikipedia.org/wiki/Butterflyfish
-            ">Read More</a>
-        
-        </div>
-      </section>
-
-    
-
-
-
-
-
-
-
-    
+        <h2><?php echo $data['nama_ikan']; ?></h2>
+        <p><?php echo $data['deskripsi']; ?></p>
+        <a href="<?php echo $data['website']; ?>">Read More</a>
+    </div>
+    <?php } ?>
+</section>
+<footer>
+        <p>&copy; 2024 Allfadhil_. All rights reserved.</p>
+        <p>
+            <a href="Project.php">Home</a> | 
+            <a href="https://sites.google.com/view/allfadhil/beranda">About Me</a> | 
+            <a href="ProjectProfil.php">Profil</a>
+        </p>
+    </footer>
 </body>
+
 </html>

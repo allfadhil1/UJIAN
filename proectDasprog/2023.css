@@ -17,6 +17,7 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
+    margin-top: 200px;
 }
 
 .content {
@@ -26,13 +27,14 @@
 
 .content h1{
     font-size: 100px;
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: 600;
     justify-content: center;
    text-align: center;
    transition: 1s ;
-   padding-top: 200px;
+   padding-top: 500px;
    margin-bottom: 0;
+   margin-top: 200px;
 
 
 }
@@ -160,10 +162,11 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color:rgb(5, 116, 176);
+    background-color:#0574b0;
     position: -webkit-sticky;
     position: sticky;
     top: o;
+    
 }
 
 li {
@@ -179,7 +182,7 @@ li a {
 }
 
 li a:hover {
-    background-color: rgb(6, 154, 234);
+    background-color: #069aea;
 }
 
 
@@ -245,6 +248,15 @@ li .dropdown {
 
 }
 
+.card-image img {
+    max-width: 100%; /* Maksimum lebar gambar adalah lebar kotak */
+    max-height: 100%; /* Maksimum tinggi gambar adalah tinggi kotak */
+    width: auto; /* Lebar gambar otomatis disesuaikan */
+    height: auto; /* Tinggi gambar otomatis disesuaikan */
+    display: block; /* Agar gambar tetap dalam kotak */
+    margin: 0 auto; /* Posisi gambar di tengah kotak */
+}
+
 .car-1{
     background-image: url('https://i1.wp.com/www.mediamaya.net/wp-content/uploads/2016/08/Ikan-Badut-nemo-1.jpg?resize=1024%2C683&ssl=1');
 }
@@ -281,10 +293,10 @@ li .dropdown {
 .card a{
     background-color: rgb(5, 116, 176);
     color: white;
-    padding: 15px 20px;
+    padding: 1px;
     display: block;
     text-align: center;
-    margin: 20px 50px;
+    margin: 20px;
     border-radius: 10px;
     text-decoration: none;
     list-style: none;
@@ -386,12 +398,12 @@ span{
 
 .detel a{
     background: rgb(5, 116, 176);
-    padding: 10px 10px;
+    padding: 1px;
     text-decoration: none;
     font-weight: bold;
     color: #ffff;
     display: inline-block;
-    margin: 30px 0;
+    margin:  0;
     border-radius: 10px;
 }
 
@@ -495,3 +507,67 @@ span{
 .contentt p{
     color: #fff;
 }
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    width: 270px;
+    height: 550px;
+    margin: 30px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    border-radius: 15px;
+}
+
+.card h2 {
+    padding: 10px;
+}
+
+.card p {
+    padding: 10px;
+    flex-grow: 1; /* Memungkinkan deskripsi untuk mengambil ruang yang tersedia */
+}
+
+.card a {
+    background-color: rgb(5, 116, 176);
+    color: white;
+    padding: 15px 20px;
+    display: block;
+    text-align: center;
+    margin: 20px 0px;
+    border-radius: 10px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.card a:hover {
+    background-color: rgb(6, 154, 234);
+}
+
+.card:hover {
+    background-color: rgb(37, 37, 37);
+    color: white;
+    cursor: pointer;
+    transform: scale(1.03);
+    transition: all 1s ease-in-out;
+    transition: all 1s ease-out;
+}
+
+.card-image {
+    height: 170px;
+    margin-bottom: 15px;
+    background-size: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+.card-image img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+

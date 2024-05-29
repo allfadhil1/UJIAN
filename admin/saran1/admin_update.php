@@ -1,13 +1,13 @@
 <?php
 @include 'config.php';
 
-$id = isset($_GET['edit']) ? $_GET['edit'] : null;
+$id_saran = isset($_GET['edit']) ? $_GET['edit'] : null;
 
-if (!$id) {
-    die("Error: ID tidak ditentukan.");
+if (!$id_saran) {
+    die("Error: id_saran tidak ditentukan.");
 }
 
-if(isset($_POST['update_product'])){
+if(isset($_POST['id_saran'])){
    $Nama = $_POST['Nama'];
    $Jenis = $_POST['Jenis'];
    $Image = $_FILES['Image']['name'];
@@ -19,7 +19,7 @@ if(isset($_POST['update_product'])){
    } else {
       if(!empty($Image)){
          // Jika gambar baru diunggah, perbarui semua data termasuk gambar
-         $update = "UPDATE saran SET Nama = '$Nama', Jenis = '$Jenis', Image = '$Image' WHERE ID = '$id'";
+         $update = "UPDATE saran SET Nama = '$Nama', Jenis = '$Jenis', Image = '$Image' WHERE id_saran = '$id_saran'";
          $upload = mysqli_query($conn, $update);
 
          if($upload){
@@ -31,7 +31,7 @@ if(isset($_POST['update_product'])){
          }
       } else {
          // Jika gambar baru tidak diunggah, perbarui data kecuali gambar
-         $update = "UPDATE saran SET Nama = '$Nama', Jenis = '$Jenis' WHERE ID = '$id'";
+         $update = "UPDATE saran SET Nama = '$Nama', Jenis = '$Jenis' WHERE id_saran = '$id_saran'";
          $upload = mysqli_query($conn, $update);
 
          if($upload){
@@ -46,7 +46,7 @@ if(isset($_POST['update_product'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id_saran">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -156,20 +156,126 @@ if(isset($_POST['update_product'])){
         .dropdown:hover .dropdown-content {
             display: block;
         }
+        
+         
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0574B0;
+    color: #ffffff;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 15px;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: #87ceeb;
+}
+
+.auth-links {
+    display: flex;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 15px;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.auth-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.auth-links a:hover::after {
+    width: 100%;
+}
+
+.auth-links a:hover {
+    color: #87ceeb;
+}
+
+
+footer {
+            background-color: #0574B0;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
     
    </style>
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a class="active" href="../../proectDasprog/Project.php">Home</a></li>
-        <li><a href="../../proectDasprog/ProjectProfil.php">Profil</a></li>
-        <li><a href="#">Medsos</a></li>
-        <li style="float: right;"><a href="../../login.php">Login</a></li>
-        <li style="float: right;"><a href="../../register.php">Register</a></li>
-    </ul>
-</nav>
-<br> <br>
+<header class="admin-header">
+        <div class="logo">
+            <a href="admin_page.php">Hello Admin</a>
+        </div>
+        <nav class="nav-links">
+            <a href="../datauser.php">User</a>
+            <a href="../dataikan/dataikan.php">Ikan</a>
+            <a href="../datakarang/datakarang.php">Karang</a>
+            <a href="../datapantai/datapantai.php">Pantai</a>
+            <a href="../saran1/admin_page.php">Saran</a>
+        </nav>
+        <div class="auth-links">
+            <a href="../../login.php">Login</a>
+            <a href="../../register.php">Register</a>
+        </div>
+    </header>
+<br> <br><br>
 <?php
    if(isset($message)){
       foreach($message as $msg){
@@ -178,7 +284,7 @@ if(isset($_POST['update_product'])){
    }
 ?>
 <?php
-         $select = mysqli_query($conn, "SELECT * FROM saran WHERE ID = '$id'");
+         $select = mysqli_query($conn, "SELECT * FROM saran WHERE id_saran = '$id_saran'");
          if($select && mysqli_num_rows($select) > 0) {
             while($row = mysqli_fetch_assoc($select)){
       ?>
@@ -191,7 +297,7 @@ if(isset($_POST['update_product'])){
          <input type="text" class="box" name="Nama" value="<?php echo htmlspecialchars($row['Nama']); ?>" placeholder="Masukkan Nama">
          <input type="text" class="box" name="Jenis" value="<?php echo htmlspecialchars($row['Jenis']); ?>" placeholder="Masukkan Jenis">
          <input type="file" class="box" name="Image" accept="image/png, image/jpeg, image/jpg">
-         <input type="submit" value="Update Saran" name="update_product" class="btn">
+         <input type="submit" value="Update Saran" name="id_saran" class="btn">
          <a href="admin_page.php" class="btn">Kembali</a>
       </form>
    

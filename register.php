@@ -25,7 +25,7 @@
                 <td>
                       <select name="Level" id="Level" required>
                        <option disabled selected> Pilih </option>
-                          <option value="ADMIN">Admin</option>
+                          
                            <option value="USER">User</option>
                        </select>
                            </td>

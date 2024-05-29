@@ -2,66 +2,209 @@
 <html>
 <head>
     <title>Form Pendaftaran Peserta</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    
     <style>
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: rgb(5, 116, 176);
-            position: sticky;
-            top: 0;
-        }
-        li {
-            float: left;
-        }
-        li a {
-            display: block;
-            color: rgb(255, 255, 255);
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        li a:hover {
-            background-color: rgb(6, 154, 234);
-        }
-        li .dropdown {
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: rgb(193, 8, 8);
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-        .dropdown-content a:hover {
-            background-color: rgb(0, 0, 0);
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+      /* CSS untuk Body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* CSS untuk Container */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* CSS untuk Header */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(5, 116, 176);
+    color: #ffffff;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 15px;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: #87ceeb;
+}
+
+.auth-links {
+    display: flex;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 15px;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.auth-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.auth-links a:hover::after {
+    width: 100%;
+}
+
+.auth-links a:hover {
+    color: #87ceeb;
+}
+
+/* CSS untuk Form */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #495057;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #565e64;
+    border-color: #434a50;
+}
+
+/* CSS untuk Footer */
+footer {
+    background-color: #0574B0;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
     </style>
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a class="active" href="../../proectDasprog/Project.php">Home</a></li>
-        <li><a href="../../proectDasprog/ProjectProfil.php">Profil</a></li>
-        <li><a href="#">Medsos</a></li>
-        <li style="float: right;"><a href="../../login.php">Login</a></li>
-        <li style="float: right;"><a href="../../register.php">Register</a></li>
-    </ul>
-</nav>
+<header class="admin-header">
+        <div class="logo">
+            <a href="datakarang.php">Hello Admin</a>
+        </div>
+        <nav class="nav-links">
+            <a href="../datauser.php">User</a>
+            <a href="../dataikan/dataikan.php">Karang</a>
+            <a href="../datakarang/datakarang.php">Karang</a>
+            <a href="../datapantai/datapantai.php">Pantai</a>
+            <a href="../saran1/admin_page.php">Saran</a>
+        </nav>
+        <div class="auth-links">
+            <a href="../../login.php">Login</a>
+            <a href="../../register.php">Register</a>
+        </div>
+    </header>
 <br> <br>
 <div class="container">
     <?php
@@ -140,32 +283,41 @@
     }
     ?>
     <h2>Update Data Karang</h2>
-<br>
+
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id_karang" value="<?php echo $id_karang; ?>"> <!-- Hidden input untuk menyimpan nilai id_karang -->
         <div class="form-group">
             <label>Nama Karang:</label>
-            <input type="text" name="nama_karang" class="form-control" placeholder="Masukan Nama Karang" required />
+            <input type="text" name="nama_karang" class="form-control" placeholder="Masukan Nama Karang" value="<?php echo $row['nama_karang']; ?>" required />
         </div>
         <div class="form-group">
             <label>Jenis:</label>
-            <input type="text" name="jenis" class="form-control" placeholder="Masukan Jenis" required/>
+            <input type="text" name="jenis" class="form-control" placeholder="Masukan Jenis" value="<?php echo $row['jenis']; ?>"required/>
         </div>
         <div class="form-group">
-            <label for="gambar">Gambar:</label><br>
-            <input type="file" id="gambar" name="gambar" class="input-field" accept="image/png, image/jpeg, image/jpg" required>
+            <label for="gambar">Gambar:</label>
+            <input type="file" id="gambar" name="gambar" class="input-field" accept="image/png, image/jpeg, image/jpg"required>
         </div>
         <div class="form-group">
             <label>Deskripsi:</label>
-            <input type="text" name="deskripsi" class="form-control" placeholder="Masukan Deskripsi" required/>
+            <input type="text" name="deskripsi" class="form-control" placeholder="Masukan Deskripsi" value="<?php echo $row['deskripsi']; ?>"required/>
         </div>
        <div class="form-group">
             <label>Website :</label>
-            <input type="text" name="website" class="form-control" placeholder="Masukan Website" required/>
-        </div><br>
+            <input type="text" name="website" class="form-control" placeholder="Masukan Website" value="<?php echo $row['website']; ?>" required/>
+        </div>
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         <a href="datakarang.php" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 </body>
+<br><br>
+<footer>
+        <p>&copy; 2024 Allfadhil_. All rights reserved.</p>
+        <p>
+            <a href="Project.php">Home</a> | 
+            <a href="https://sites.google.com/view/allfadhil/beranda">About Me</a> | 
+            <a href="ProjectProfil.php">Profil</a>
+        </p>
+    </footer>
 </html>
