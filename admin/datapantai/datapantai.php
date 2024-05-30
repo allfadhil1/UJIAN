@@ -235,7 +235,7 @@ footer a:hover {
 }
 
 .jenis-col {
-    width: 70px;
+    width: 80px;
 }
 
 .deskripsi-col {
@@ -320,7 +320,7 @@ th, td {
 
 <div class="container">
     
-    <h4><center>DAFTAR IKAN</center></h4>
+    <h4><center>DAFTAR PANTAI</center></h4>
     <br>
     <?php
     include "koneksi.php";

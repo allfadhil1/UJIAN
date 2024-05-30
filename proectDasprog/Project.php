@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Cek apakah pengguna sudah login dan levelnya adalah USER
+if (!isset($_SESSION['Username']) || $_SESSION['Level'] != 'USER') {
+    header("Location: ../login.php");
+    exit();
+}
+
+// Isi halaman user di sini
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,7 +108,7 @@
 <body>
 <header class="admin-header">
         <div class="logo">
-            <a href="project.php">Hello User</a>
+            <a href="project.php">Hello<?php echo $_SESSION['Username']; ?></a>
         </div>
         <nav class="nav-links">
             <a href="project.php">Home</a>
@@ -104,6 +116,7 @@
             <a href="user_form.php">Saran</a>
            
         </nav>
+        
         <div class="auth-links">
             <a href="../login.php">Login</a>
             <a href="../register.php">Register</a>

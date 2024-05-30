@@ -188,7 +188,7 @@ footer {
             <a href="../datauser.php">User</a>
             <a href="../dataikan/dataikan.php">Ikan</a>
             <a href="../datakarang/datakarang.php">Karang</a>
-            <a href="../datapantai.datapantai.php">Pantai</a>
+            <a href="../datapantai/datapantai.php">Pantai</a>
             <a href="../saran1/admin_page.php">Saran</a>
         </nav>
         <div class="auth-links">
@@ -202,9 +202,8 @@ footer {
             <div class="welcome-message">
                 <h2>Welcome, Admin</h2>
                 <p>Selamat Datang di Halaman Admin, Saya berharap anda Bertanggung Jawab menjadi Admin</p>
-                <p>Feel free to navigate through the different sections to manage users, view reports, and adjust settings as needed.</p>
-                <p>Remember, with great power comes great responsibility. Let's make today productive!</p>
-                <p>If you need any help, our support team is just a click away. Have a great day!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              
             </div>
         </main>
     </div>

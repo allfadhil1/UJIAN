@@ -1,5 +1,17 @@
 <?php
-@include 'config.php';
+@include '../admin/saran1/config.php';
+
+session_start();
+
+// Cek apakah pengguna sudah login dan levelnya adalah USER
+if (!isset($_SESSION['Username']) || $_SESSION['Level'] != 'USER') {
+    header("Location: ../login.php");
+    exit();
+}
+
+// Isi halaman user di sini
+
+
 
 // Pesan untuk kesalahan atau keberhasilan
 $pesan = [];
@@ -7,18 +19,20 @@ $pesan = [];
 // Proses form jika tombol Kirim ditekan
 if (isset($_POST['add_saran'])) {
     // Ambil nilai yang dikirimkan dari form
+    $ID = $_SESSION['ID'];
     $Nama = mysqli_real_escape_string($conn, $_POST['Nama']);
     $Jenis = mysqli_real_escape_string($conn, $_POST['Jenis']);
+    $Deskripsi = mysqli_real_escape_string($conn, $_POST['Deskripsi']);
     $Gambar = $_FILES['Image']['name'];
     $Gambar_tmp_nama = $_FILES['Image']['tmp_name'];
-    $Gambar_folder = '../admin/saran/uploaded_img/' . $Gambar;
+    $Gambar_folder = '../admin/saran1/uploaded_img/' . $Gambar;
 
     // Periksa apakah semua input terisi
     if (empty($Nama) || empty($Jenis) || empty($Gambar)) {
         $pesan[] = 'Harap isi semua kolom';
     } else {
         // Jalankan query untuk memasukkan data saran ke dalam tabel
-        $insert_query = "INSERT INTO saran (Nama, Jenis, Image) VALUES ('$Nama', '$Jenis', '$Gambar')";
+        $insert_query = "INSERT INTO saran (ID, Nama, Jenis, Deskripsi, Image) VALUES ('$ID', '$Nama', '$Jenis', '$Deskripsi', '$Gambar')";
         $insert_result = mysqli_query($conn, $insert_query);
 
         if ($insert_result) {
@@ -155,7 +169,7 @@ if (isset($_POST['add_saran'])) {
 
 <header class="admin-header">
         <div class="logo">
-            <a href="project.php">Hello User</a>
+            <a href="project.php">Hello <?php echo $_SESSION['Username']; ?></a>
         </div>
         <nav class="nav-links">
             <a href="project.php">Home</a>
@@ -287,6 +301,10 @@ footer {
 <div class="container">
     <h2>Tambah Saran Ikan, Pantai dan Terumbu Karang</h2>
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+            <label for="Username">Username:</label>
+            <input type="text" id="Nam" name="ID" value="<?php echo $_SESSION['Username']; ?>" class="input-field" placeholder="Masukkan Nama" readonly required>
+        </div>
         <div class="form-group">
             <label for="Nama">Nama:</label>
             <input type="text" id="Nama" name="Nama" value="<?php echo isset($_POST['Nama']) ? htmlspecialchars($_POST['Nama']) : ''; ?>" class="input-field" placeholder="Masukkan Nama" required>
@@ -294,6 +312,10 @@ footer {
         <div class="form-group">
             <label for="Jenis">Jenis:</label>
             <input type="text" id="Jenis" name="Jenis" value="<?php echo isset($_POST['Jenis']) ? htmlspecialchars($_POST['Jenis']) : ''; ?>" class="input-field" placeholder="Masukkan Jenis" required>
+        </div>
+        <div class="form-group">
+            <label for="Deskripsi">Deskripsi:</label>
+            <input type="text" id="Jenis" name="Deskripsi" value="<?php echo isset($_POST['Deskripsi']) ? htmlspecialchars($_POST['Jenis']) : ''; ?>" class="input-field" placeholder="Masukkan Deskripsi" required>
         </div>
         <div class="form-group">
             <label for="Image">Gambar:</label>

@@ -292,7 +292,7 @@
                 move_uploaded_file($Gambar_tmp_nama, $Gambar_folder);
                
                 echo "<div class='alert alert-success'> Data berhasil disimpan.</div>";
-                header("Location:dataikan.php");
+              
                 // Kosongkan nilai input setelah pengiriman sukses
                 $_POST['nama_ikan'] = $_POST['jenis'] = $_POST['deskripsi'] = $_POST['website'] ='';
             } else {

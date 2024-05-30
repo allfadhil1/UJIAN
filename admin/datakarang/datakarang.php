@@ -235,7 +235,7 @@ footer a:hover {
 }
 
 .jenis-col {
-    width: 70px;
+    width: 120px;
 }
 
 .deskripsi-col {
@@ -295,7 +295,7 @@ th, td {
         
     </style>
 </head>
-<title>Data Ikan</title>
+<title>Data Karang</title>
 
 <body>
 <header class="admin-header">

@@ -1,37 +1,34 @@
 <?php
+session_start(); // Mulai sesi
+
 include 'koneksi.php';
 
-$username = $_POST['Username'];
-$password = $_POST['Password'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['Username'];
+    $password = $_POST['Password'];
 
-$login = mysqli_query($mysql,"select * from user where username='$username' and password='$password'");
-$cek = mysqli_num_rows($login);
+    // Query untuk cek username dan password
+    $login = mysqli_query($mysql, "SELECT * FROM user WHERE username='$username' AND password='$password'");
+    $cek = mysqli_num_rows($login);
 
-if($cek > 0){
+    if ($cek > 0) {
+        $data = mysqli_fetch_assoc($login);
 
-    $data = mysqli_fetch_assoc($login);
-
-    if($data['Level']=="ADMIN"){
-
+        // Set sesi berdasarkan level pengguna
         $_SESSION['Username'] = $username;
-        $_SESSION['Level'] == "ADMIN";
+        $_SESSION['UserID'] = $data['id']; // Asumsikan ada kolom 'id' di tabel user
+        $_SESSION['Level'] = $data['Level'];
 
-        header("location:admin/homeadmin/homeadmin.php");
-
-    }else if($data['Level']=="USER"){
-
-        $_SESSION['Username']=$username;
-        $_SESSION['Level'] == "USER";
-
-        header("location:proectDasprog/Project.php");
-
-    }else{
-
-        header("locationn:Project.php");
-
+        if ($data['Level'] == "ADMIN") {
+            header("Location: admin/homeadmin/homeadmin.php");
+        } elseif ($data['Level'] == "USER") {
+            header("Location: proectDasprog/Project.php");
+        } else {
+            header("Location: Project.php");
+        }
+    } else {
+        // Redirect ke halaman login dengan pesan kesalahan
+        header("Location: login.php?error=invalid_credentials");
     }
-
-}else{
-    header("location:Project.php");
 }
 ?>

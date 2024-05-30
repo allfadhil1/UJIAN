@@ -24,8 +24,9 @@
                 <br>
                 <td>
                       <select name="Level" id="Level" required>
+                        
                        <option disabled selected> Pilih </option>
-                          
+                       <option value="ADMIN">Admin</option>
                            <option value="USER">User</option>
                        </select>
                            </td>
@@ -58,7 +59,7 @@ $result = mysqli_query($mysql,
 "INSERT INTO user(Nama_Depan,Nama_Belakang,Username, Password, Level) VALUES ('$namadepans','$namabelakangs','$usernames', '$passwords', '$levels')");
 // Show message when user added
 // echo "Data added successfully. <a href='index.php'>View Data Buku</a>"; 
-header("location: proectDasprog/Project.php");
+header("location:login.php");
 }
 ?>
             </form>

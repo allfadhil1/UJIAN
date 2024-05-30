@@ -233,7 +233,7 @@ footer {
     ?>
     <div class="card">
         <div class="card-image">
-            <img src="../admin/datakarang/uploaded_img/<?php echo $data['gambar']; ?>" alt="<?php echo $data['nama_pantai']; ?>">
+            <img src="../admin/datapantai/uploaded_img/<?php echo $data['gambar']; ?>" alt="<?php echo $data['nama_pantai']; ?>">
         </div>
         <h2><?php echo $data['nama_pantai']; ?></h2>
         <p><?php echo $data['deskripsi']; ?></p>

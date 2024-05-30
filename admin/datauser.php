@@ -314,8 +314,8 @@ Data User</title>
             <a href="saran1/admin_page.php">Saran</a>
         </nav>
         <div class="auth-links">
-            <a href="../../login.php">Login</a>
-            <a href="../../register.php">Register</a>
+            <a href="../login.php">Login</a>
+            <a href="../register.php">Register</a>
         </div>
     </header>
 <div class="container">

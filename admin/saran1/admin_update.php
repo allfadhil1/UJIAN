@@ -10,6 +10,7 @@ if (!$id_saran) {
 if(isset($_POST['id_saran'])){
    $Nama = $_POST['Nama'];
    $Jenis = $_POST['Jenis'];
+   $Deskripsi = $_POST['Deskripsi'];
    $Image = $_FILES['Image']['name'];
    $Image_tmp_Nama = $_FILES['Image']['tmp_name'];
    $Image_folder = 'uploaded_img/'.$Image;
@@ -19,7 +20,7 @@ if(isset($_POST['id_saran'])){
    } else {
       if(!empty($Image)){
          // Jika gambar baru diunggah, perbarui semua data termasuk gambar
-         $update = "UPDATE saran SET Nama = '$Nama', Jenis = '$Jenis', Image = '$Image' WHERE id_saran = '$id_saran'";
+         $update = "UPDATE saran SET Nama = '$Nama', Jenis = '$Jenis', Image = '$Image', Deskripsi = 'Deskripsi' WHERE id_saran = '$id_saran'";
          $upload = mysqli_query($conn, $update);
 
          if($upload){
@@ -31,7 +32,7 @@ if(isset($_POST['id_saran'])){
          }
       } else {
          // Jika gambar baru tidak diunggah, perbarui data kecuali gambar
-         $update = "UPDATE saran SET Nama = '$Nama', Jenis = '$Jenis' WHERE id_saran = '$id_saran'";
+         $update = "UPDATE saran SET Nama = '$Nama', Jenis = '$Jenis', Deskripsi = 'Deskripsi' WHERE id_saran = '$id_saran'";
          $upload = mysqli_query($conn, $update);
 
          if($upload){
@@ -296,6 +297,7 @@ footer {
          <h3 class="title">Update Saran</h3>
          <input type="text" class="box" name="Nama" value="<?php echo htmlspecialchars($row['Nama']); ?>" placeholder="Masukkan Nama">
          <input type="text" class="box" name="Jenis" value="<?php echo htmlspecialchars($row['Jenis']); ?>" placeholder="Masukkan Jenis">
+         <input type="text" class="box" name="Deskripsi" value="<?php echo htmlspecialchars($row['Deskripsi']); ?>" placeholder="Masukkan Jenis">
          <input type="file" class="box" name="Image" accept="image/png, image/jpeg, image/jpg">
          <input type="submit" value="Update Saran" name="id_saran" class="btn">
          <a href="admin_page.php" class="btn">Kembali</a>

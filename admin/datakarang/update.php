@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form Pendaftaran Peserta</title>
+    <title>Form Update Karang</title>
     
     <style>
       /* CSS untuk Body */

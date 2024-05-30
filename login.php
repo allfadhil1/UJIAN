@@ -11,21 +11,14 @@
         <div class="login-box">
             <h2>Login</h2>
             <form action="halaman_login.php" method="post">
-
                 <input type="text" id="Username" name="Username" required placeholder="Username">
-                
                 <input type="password" id="Password" name="Password" required placeholder="Password">
-                
                 <div class="options">
                     <input type="checkbox" id="Remember" name="remember">
                     <label for="Remember">Remember me</label>
-                    <a href="halaman_login.php">Forgot Password?</a>
+                    <a href="#">Forgot Password?</a>
                 </div>
-                
-                
                 <button type="submit">Login</button>
-                <a href="halaman_login.php"></a>
-
                 <p>Don't have an account? <a href="register.php" id="register">Register</a></p>
             </form>
         </div>

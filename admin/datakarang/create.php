@@ -292,7 +292,7 @@
                 move_uploaded_file($Gambar_tmp_nama, $Gambar_folder);
                
                 echo "<div class='alert alert-success'> Data berhasil disimpan.</div>";
-                header("Location:datakarang.php");
+               
                 // Kosongkan nilai input setelah pengiriman sukses
                 $_POST['nama_karang'] = $_POST['jenis'] = $_POST['deskripsi'] = $_POST['website'] ='';
             } else {
@@ -300,7 +300,7 @@
             }
         }
         ?>
-        <h2>Input Data Ikan</h2><br>
+        <h2>Input Data Karang</h2><br>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
