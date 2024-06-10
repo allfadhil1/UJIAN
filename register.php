@@ -1,72 +1,180 @@
+<?php
+ob_start(); // Mulai buffering output
+
+if (isset($_POST['Submit'])) {
+    $gmails = $_POST['Gmail'];
+    $telepons = $_POST['Telepon'];
+    $usernames = $_POST['Username'];
+    $passwords = $_POST['Password'];
+    $levels = $_POST['Level'];
+
+    // Sertakan file koneksi database
+    include_once("koneksi.php");
+
+    // Masukkan data pengguna ke dalam tabel
+    $result = mysqli_query($mysql, "INSERT INTO user(Gmail, Telepon, Username, Password, Level) VALUES ('$gmails', '$telepons', '$usernames', '$passwords', '$levels')");
+
+    // Alihkan ke halaman login setelah berhasil menambahkan data
+    header("Location: login.php");
+    exit(); // Pastikan untuk keluar setelah mengirim header
+}
+
+ob_end_flush(); // Selesaikan buffering dan kirim output
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>Halaman Registrasi</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('proectDasprog/ASSET/diving.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .glass-containerr {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-box {
+            text-align: center;
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .login-box form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .login-box label {
+            align-self: flex-start;
+            color: #fff;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .login-box input[type="text"],
+        .login-box input[type="password"],
+        .login-box select {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .login-box input[type="text"]::placeholder,
+        .login-box input[type="password"]::placeholder,
+        .login-box select::placeholder {
+            color: #fff;
+        }
+
+        .login-box .options input {
+            margin-right: 5px;
+        }
+
+        .login-box .options label {
+            margin: 0;
+            color: #fff;
+        }
+
+        .login-box .options a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: auto;
+        }
+
+        .login-box button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #007BFF;
+            color: #fff;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .login-box button:hover {
+            background: #0056b3;
+        }
+
+        .login-box p {
+            margin-top: 20px;
+        }
+
+        .login-box p a {
+            color: #007BFF;
+            text-decoration: none;
+            margin-left: auto;
+        }
+
+        .login-box p a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-
-|
-     <div class="glass-containerr">
+    <div class="glass-containerr">
         <div class="login-box">
-            <h2>Register</h2>
+            <h2>Registrasi</h2>
             <form action="register.php" method="post">
-
-                <input type="text" id="Nama_Depan" name="Nama_Depan" required placeholder="Nama_Depan">
-                
-                <input type="text" id="Nama_Belakang" name="Nama_Belakang" required placeholder="Nama_Belakang">
-
-                <input type="text" id="Username" name="Username" required placeholder="Username">
-
-                <input type="password" id="Password" name="Password" required placeholder="Paassword">
-                <br>
-                <td>
-                      <select name="Level" id="Level" required>
-                        
-                       <option disabled selected> Pilih </option>
-                       <option value="ADMIN">Admin</option>
-                           <option value="USER">User</option>
-                       </select>
-                           </td>
-                <div class="options">
-                    <input type="checkbox" id="Remember" name="remember">
-                    <label for="Remember">Remember me</label>
-                    <a href="halaman_login.php">Forgot Password?</a>
+                <div>
+                    <label for="Gmail">Gmail :</label>
+                    <input type="text" id="Gmail" name="Gmail" required placeholder="Gmail">
                 </div>
-                
-                           <button name='Submit'>Register</button>
-
-                
-                
-                
-
-                <p>Have an account? <a href="login.php" id="login">Login</a></p>
-                <?php
-// Check If form submitted, insert form data into users table. 
-if(isset($_POST['Submit'])) {
-$namadepans= $_POST['Nama_Depan'];
-$namabelakangs= $_POST['Nama_Belakang'];
-$usernames = $_POST['Username'];
-$passwords = $_POST['Password']; 
-$levels= $_POST['Level'];
-//echo($judul);
-// include database connection file
-include_once("koneksi.php");
-// Insert user data into table
-$result = mysqli_query($mysql,
-"INSERT INTO user(Nama_Depan,Nama_Belakang,Username, Password, Level) VALUES ('$namadepans','$namabelakangs','$usernames', '$passwords', '$levels')");
-// Show message when user added
-// echo "Data added successfully. <a href='index.php'>View Data Buku</a>"; 
-header("location:login.php");
-}
-?>
+                <div>
+                    <label for="Telepon">No Telepon :</label>
+                    <input type="text" id="Telepon" name="Telepon" required placeholder="No Telepon">
+                </div>
+                <div>
+                    <label for="Username">Username :</label>
+                    <input type="text" id="Username" name="Username" required placeholder="Username">
+                </div>
+                <div>
+                    <label for="Password">Password :</label>
+                    <input type="password" id="Password" name="Password" required placeholder="Password">
+                </div>
+                <div>
+                    <label for="Level">Level :</label>
+                    <select name="Level" id="Level" required>
+                        <option disabled selected>Pilih</option>
+                        <option value="USER">User</option>
+                    </select>
+                </div>
+                <div class="options">
+                    <a href="forgot_password.php">Lupa Password?</a> |
+                    <label>
+                        <input type="checkbox" id="Remember" name="remember">
+                        Ingat saya
+                    </label>
+                </div>
+                <button name="Submit">Registrasi</button>
+                <p>Sudah memiliki akun? <a href="login.php" id="login">Login</a></p>
             </form>
         </div>
     </div>
-   
-
 </body>
-    
 </html>

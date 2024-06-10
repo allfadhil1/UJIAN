@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Cek apakah pengguna sudah login dan levelnya adalah USER
+if (!isset($_SESSION['Username']) || $_SESSION['Level'] != 'USER') {
+    header("Location: ../login.php");
+    exit();
+}
+
+// Isi halaman user di sini
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,16 +24,17 @@
 
 <header class="admin-header">
         <div class="logo">
-            <a href="project.php">Hello User</a>
+            <a href="project.php">Hello <?php echo $_SESSION['Username']; ?></a>
         </div>
         <nav class="nav-links">
             <a href="project.php">Home</a>
-            <a href="ProjectProfil.php">Profil</a>
-            <a href="user_form.php">Saran</a>
+            <a href="ProjectProfil.php">About Me</a>
+            <a href="riwayat.php">Riwayat</a>
+            <a href="user_form.php">Masukkan</a>
            
         </nav>
         <div class="auth-links">
-            <a href="../login.php">Login</a>
+        <a href="../login.php">Logout</a>
             <a href="../register.php">Register</a>
         </div>
         <style>
@@ -136,6 +149,24 @@
         }
         footer a:hover {
             text-decoration: underline;
+        }
+
+        .detel a {
+            text-decoration: none;
+            display: inline-block;
+            color: #fff;
+            font-size: 20px;
+            border: 2px solid #0574B0;
+            background-color: #0574B0;
+            padding: 10px 50px; /* Increased padding for larger button */
+            border-radius: 50px;
+            margin-top: 20px; /* Added margin-top for spacing */
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .detel a:hover {
+            background-color: #045a8b;
+            border-color: #045a8b;
         }
 
         </style>

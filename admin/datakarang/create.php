@@ -248,14 +248,15 @@
         </div>
         <nav class="nav-links">
             <a href="../datauser.php">User</a>
-            <a href="../dataikan/dataikan.php">Ikan</a>
-            <a href="../datakarang/datakarang.php">Karang</a>
-            <a href="../datapantai/datapantai.php">Pantai</a>
+            <a href="../dataikan/dataikan.php">Konten</a>
+            <a href="../datakarang/datakarang.php">Kategori</a>
+            <a href="../datapantai/datapantai.php">Diving</a>
+            <a href="../transaksiadmin/transaksi.php">Transaksi</a>
             <a href="../saran1/admin_page.php">Saran</a>
         </nav>
         <div class="auth-links">
-            <a href="../../login.php">Login</a>
-            <a href="../../register.php">Register</a>
+            <a href="../../login.php">Logout</a>
+          
         </div>
     </header>
     <br> <br>
@@ -275,54 +276,32 @@
         // Cek apakah ada kiriman form dari method POST
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            $nama_karang = input($_POST["nama_karang"]);
-            $jenis = input($_POST["jenis"]);
-            
-            $Gambar = $_FILES['gambar']['name'];
-            $Gambar_tmp_nama = $_FILES['gambar']['tmp_name'];
-            $Gambar_folder = 'uploaded_img/' . $Gambar;
-            $deskripsi = input($_POST["deskripsi"]);
-            $website = input($_POST["website"]);
+            $nama_kategori = input($_POST["nama_kategori"]);
+           
 
-            // Query untuk menginput data ke dalam tabel karang
-            $sql = "INSERT INTO karang (nama_karang, jenis, gambar, deskripsi, website) VALUES ('$nama_karang', '$jenis', '$Gambar', '$deskripsi', '$website')";
+            // Query untuk menginput data ke dalam tabel kategori
+            $sql = "INSERT INTO kategori (nama_kategori) VALUES ('$nama_kategori')";
             
             if (mysqli_query($conn, $sql)) {
-                // Jika berhasil memasukkan data, pindahkan gambar ke folder yang ditentukan
-                move_uploaded_file($Gambar_tmp_nama, $Gambar_folder);
+               
                
                 echo "<div class='alert alert-success'> Data berhasil disimpan.</div>";
                
                 // Kosongkan nilai input setelah pengiriman sukses
-                $_POST['nama_karang'] = $_POST['jenis'] = $_POST['deskripsi'] = $_POST['website'] ='';
+                $_POST['nama_kategori'] = '';
             } else {
                 echo "<div class='alert alert-danger'> Data Gagal disimpan.</div>";
             }
         }
         ?>
-        <h2>Input Data Karang</h2><br>
+        <h2>Input Data Kategori</h2><br>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label>Nama Karang:</label>
-                <input type="text" name="nama_karang" class="form-control" placeholder="Masukan Nama Karang" required />
+                <label>Nama Kategori:</label>
+                <input type="text" name="nama_kategori" class="form-control" placeholder="Masukan Kategori" required />
             </div>
-            <div class="form-group">
-                <label>Jenis</label>
-                <input type="text" name="jenis" class="form-control" placeholder="Masukan Jenis" required/>
-            </div>
-            <div class="form-group">
-                <label for="gambar">Gambar:</label>
-                <input type="file" id="gambar" name="gambar" class="input-field" accept="image/png, image/jpeg, image/jpg" required>
-            </div>
-            <div class="form-group">
-                <label>Deskripsi:</label>
-                <input type="text" name="deskripsi" class="form-control" placeholder="Masukan Deskripsi" required/>
-            </div>
-            <div class="form-group">
-                <label>Website :</label>
-                <input type="text" name="website" class="form-control" placeholder="Masukan Website" required/>
-            </div><br>
+           
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             <a href="datakarang.php" class="btn btn-secondary">Cancel</a>
         </form>

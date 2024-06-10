@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Cek apakah pengguna sudah login dan levelnya adalah USER
+if (!isset($_SESSION['Username']) || $_SESSION['Level'] != 'USER') {
+    header("Location: ../login.php");
+    exit();
+}
+
+// Isi halaman user di sini
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -8,17 +20,17 @@
     <link rel="stylesheet" type="text/css" href="2023.css">
     <style>
         .card-image img {
-            max-width: 100%; /* Maksimum lebar gambar adalah lebar kotak */
-            max-height: 100%; /* Maksimum tinggi gambar adalah tinggi kotak */
-            width: auto; /* Lebar gambar otomatis disesuaikan */
-            height: auto; /* Tinggi gambar otomatis disesuaikan */
-            display: block; /* Agar gambar tetap dalam kotak */
-            margin: 0 auto; /* Posisi gambar di tengah kotak */
-            border-top-left-radius: 10px; /* Radius sudut kiri atas */
-            border-top-right-radius: 10px; /* Radius sudut kanan atas */
-            object-fit: cover; /* Gambar akan di-stretch untuk mengisi kotak */
-            height: 100%; /* Tinggi gambar mengisi kotak sepenuhnya */
-            width: 100%; /* Lebar gambar mengisi kotak sepenuhnya */
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
         }
 
         h1 {
@@ -32,28 +44,27 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border: 0px solid #000; /* Menebalkan garis hitam pada box */
+            border: 0px solid #000;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 6px 10px rgba(0, 0, 0); /* Menambahkan box shadow */
+            box-shadow: 0 6px 10px rgba(0, 0, 0);
             margin: 20px;
             padding: 20px;
             height: 100%;
-            transition: background-color 0.3s, color 0.3s; /* Menambahkan transisi untuk perubahan warna */
+            transition: background-color 0.3s, color 0.3s;
             background-color: rgb(255, 255, 255);
             width: 300px;
             height: 640px;
-    margin: 30px;
-    box-shadow: 0 0 10px rgb(0, 0, 0);
-    border-radius: 15px;
-
+            margin: 30px;
+            box-shadow: 0 0 10px rgb(0, 0, 0);
+            border-radius: 15px;
         }
 
         .card h2 {
             margin-top: 0px;
             font-size: 1.3em;
             color: #333;
-            transition: color 0.3s; /* Menambahkan transisi untuk perubahan warna */
+            transition: color 0.3s;
             font-family: 'Monserrat', cursive;
         }
 
@@ -61,7 +72,7 @@
             flex-grow: 1;
             margin-top: 0px;
             color: #666;
-            transition: color 0.3s; /* Menambahkan transisi untuk perubahan warna */
+            transition: color 0.3s;
             font-family: 'Monserrat', cursive;
         }
 
@@ -78,13 +89,13 @@
         }
 
         .card:hover {
-            background-color: #333; /* Mengubah background menjadi abu-abu gelap saat pointer menyentuh kartu */
-            color: white; /* Mengubah warna font menjadi putih */
+            background-color: #333;
+            color: white;
         }
 
         .card:hover h2,
         .card:hover p {
-            color: white; /* Mengubah warna font menjadi putih saat pointer menyentuh kartu */
+            color: white;
         }
 
         .container {
@@ -92,25 +103,48 @@
             flex-wrap: wrap;
             justify-content: center;
         }
+
+        .search-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-form input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .search-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0574b0;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-form button:hover {
+            background-color: #045a8d;
+        }
     </style>
 </head>
 <body>
 <header class="admin-header">
         <div class="logo">
-            <a href="project.php">Hello User</a>
+            <a href="project.php">Hello <?php echo $_SESSION['Username']; ?></a>
         </div>
         <nav class="nav-links">
             <a href="project.php">Home</a>
-            <a href="ProjectProfil.php">Profil</a>
-            <a href="user_form.php">Saran</a>
-           
+            <a href="ProjectProfil.php">About Me</a>
+            <a href="riwayat.php">Riwayat</a>
+            <a href="user_form.php">Masukkan</a>
         </nav>
         <div class="auth-links">
-            <a href="../login.php">Login</a>
+        <a href="../login.php">Logout</a>
             <a href="../register.php">Register</a>
         </div>
         <style>
-            
             @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
@@ -119,7 +153,6 @@ body {
     padding: 0;
     background-color: #f0f2f5;
 }
-
 
 .admin-header {
     display: flex;
@@ -208,40 +241,68 @@ body {
 }
 
 footer {
-            background-color: #0574B0;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-        }
-        footer a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
+    background-color: #0574B0;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
 
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
         </style>
     </header>
 <br><br><br><br>
 <h1><center>DAFTAR IKAN</center></h1><br>
+
+<div class="search-form">
+    <form method="GET" action="">
+        <input type="text" name="search" placeholder="Cari Ikan...">
+        <button type="submit">Cari</button>
+    </form>
+</div>
+
 <section class="container">
     <?php
     include '../koneksi.php';
-    $query_mysql = mysqli_query($mysql, "SELECT * FROM ikan") or die(mysqli_error($mysql));
-    while($data = mysqli_fetch_array($query_mysql)) {
+
+    // Check if search query is provided
+    $search_query = "";
+    if (isset($_GET['search'])) {
+        $search_query = mysqli_real_escape_string($mysql, $_GET['search']);
+    }
+
+    // Modify the query to search based on the search query
+    if ($search_query != "") {
+        $query_mysql = mysqli_query($mysql, "SELECT * FROM konten WHERE id_kategori = 1 AND (nama LIKE '%$search_query%' OR deskripsi LIKE '%$search_query%')") or die(mysqli_error($mysql));
+    } else {
+        $query_mysql = mysqli_query($mysql, "SELECT * FROM konten WHERE id_kategori = 1") or die(mysqli_error($mysql));
+    }
+
+    // Check if there are results
+    if (mysqli_num_rows($query_mysql) == 0) {
+        echo "<p style='text-align: center; font-size: 1.2em; color: #666; font-family: \"Monserrat\", cursive;'> " . htmlspecialchars($search_query) . " Not Found<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>";
+    } else {
+        while ($data = mysqli_fetch_array($query_mysql)) {
     ?>
     <div class="card">
         <div class="card-image">
-            <img src="../admin/dataikan/uploaded_img/<?php echo $data['gambar']; ?>" alt="<?php echo 
-                $data['nama_ikan']; ?>">
+            <img src="../admin/dataikan/uploaded_img/<?php echo $data['gambar']; ?>" alt="<?php echo $data['nama']; ?>">
         </div>
-        <h2><?php echo $data['nama_ikan']; ?></h2>
+        <h2><?php echo $data['nama']; ?></h2>
         <p><?php echo $data['deskripsi']; ?></p>
         <a href="<?php echo $data['website']; ?>">Read More</a>
     </div>
-    <?php } ?>
+    <?php 
+        }
+    }
+    ?>
 </section>
 <footer>
         <p>&copy; 2024 Allfadhil_. All rights reserved.</p>
@@ -252,5 +313,4 @@ footer {
         </p>
     </footer>
 </body>
-
 </html>

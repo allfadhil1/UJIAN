@@ -7,6 +7,8 @@ if (!$id_saran) {
     die("Error: id_saran tidak ditentukan.");
 }
 
+echo "ID Saran: " . htmlspecialchars($id_saran); // Tambahkan ini untuk debugging
+
 if(isset($_POST['id_saran'])){
    $Nama = $_POST['Nama'];
    $Jenis = $_POST['Jenis'];
@@ -20,7 +22,7 @@ if(isset($_POST['id_saran'])){
    } else {
       if(!empty($Image)){
          // Jika gambar baru diunggah, perbarui semua data termasuk gambar
-         $update = "UPDATE saran SET Nama = '$Nama', Jenis = '$Jenis', Image = '$Image', Deskripsi = 'Deskripsi' WHERE id_saran = '$id_saran'";
+         $update = "UPDATE saran SET Nama = '$Nama', Jenis = '$Jenis', Image = '$Image', Deskripsi = '$Deskripsi' WHERE id_saran = '$id_saran'";
          $upload = mysqli_query($conn, $update);
 
          if($upload){
@@ -32,7 +34,7 @@ if(isset($_POST['id_saran'])){
          }
       } else {
          // Jika gambar baru tidak diunggah, perbarui data kecuali gambar
-         $update = "UPDATE saran SET Nama = '$Nama', Jenis = '$Jenis', Deskripsi = 'Deskripsi' WHERE id_saran = '$id_saran'";
+         $update = "UPDATE saran SET Nama = '$Nama', Jenis = '$Jenis', Deskripsi = '$Deskripsi' WHERE id_saran = '$id_saran'";
          $upload = mysqli_query($conn, $update);
 
          if($upload){
@@ -266,14 +268,15 @@ footer {
         </div>
         <nav class="nav-links">
             <a href="../datauser.php">User</a>
-            <a href="../dataikan/dataikan.php">Ikan</a>
-            <a href="../datakarang/datakarang.php">Karang</a>
-            <a href="../datapantai/datapantai.php">Pantai</a>
+            <a href="../dataikan/dataikan.php">Konten</a>
+            <a href="../datakarang/datakarang.php">Kategori</a>
+            <a href="../datapantai/datapantai.php">Diving</a>
+            <a href="../transaksiadmin/transaksi.php">Transaksi</a>
             <a href="../saran1/admin_page.php">Saran</a>
         </nav>
         <div class="auth-links">
-            <a href="../../login.php">Login</a>
-            <a href="../../register.php">Register</a>
+            <a href="../../login.php">Logout</a>
+           
         </div>
     </header>
 <br> <br><br>

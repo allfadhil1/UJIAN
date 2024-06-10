@@ -195,14 +195,15 @@ footer a:hover {
         </div>
         <nav class="nav-links">
             <a href="../datauser.php">User</a>
-            <a href="../dataikan/dataikan.php">Ikan</a>
-            <a href="../datakarang/datakarang.php">Karang</a>
-            <a href="../datapantai/datapantai.php">Pantai</a>
+            <a href="../dataikan/dataikan.php">Konten</a>
+            <a href="../datakarang/datakarang.php">Kategori</a>
+            <a href="../datapantai/datapantai.php">Diving</a>
+            <a href="../transaksiadmin/transaksi.php">Transaksi</a>
             <a href="../saran1/admin_page.php">Saran</a>
         </nav>
         <div class="auth-links">
-            <a href="../../login.php">Login</a>
-            <a href="../../register.php">Register</a>
+            <a href="../../login.php">Logout</a>
+          
         </div>
     </header>
 <br> <br>
@@ -222,10 +223,10 @@ footer a:hover {
     // Cek apakah ada kiriman form dari method POST
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $id_ikan = input($_POST["id_ikan"]); // Ambil nilai id_ikan dari form
+        $id_konten = input($_POST["id_konten"]); // Ambil nilai id_konten dari form
 
-        $nama_ikan = input($_POST["nama_ikan"]);
-        $jenis = input($_POST["jenis"]);
+        $nama = input($_POST["nama"]);
+        $id_kategori = input($_POST["id_kategori"]);
         
         $Gambar = $_FILES['gambar']['name'];
         $Gambar_tmp_nama = $_FILES['gambar']['tmp_name'];
@@ -242,14 +243,14 @@ footer a:hover {
             // Pindahkan file gambar yang diunggah ke folder tujuan
             move_uploaded_file($Gambar_tmp_nama, $Gambar_folder);
 
-            //Query update data pada tabel ikan
-            $sql = "UPDATE ikan SET
-            nama_ikan='$nama_ikan',
-            jenis='$jenis',
+            //Query update data pada tabel konten
+            $sql = "UPDATE konten SET
+            nama='$nama',
+            id_kategori='$id_kategori',
             gambar='$Gambar',
             deskripsi='$deskripsi',
             website='$website'
-            WHERE id_ikan='$id_ikan'";
+            WHERE id_konten='$id_konten'";
         
             //Mengeksekusi atau menjalankan query diatas
             $hasil = mysqli_query($conn, $sql);
@@ -262,11 +263,11 @@ footer a:hover {
         }
     }
 
-    // Mendapatkan id_ikan dari parameter URL (jika disediakan)
-    $id_ikan = $_GET['id_ikan'];
+    // Mendapatkan id_konten dari parameter URL (jika disediakan)
+    $id_konten = $_GET['id_konten'];
 
-    // Query untuk mendapatkan data ikan berdasarkan id_ikan
-    $query_pantai = "SELECT * FROM ikan WHERE id_ikan = $id_ikan";
+    // Query untuk mendapatkan data konten berdasarkan id_konten
+    $query_pantai = "SELECT * FROM konten WHERE id_konten = $id_konten";
 
     // Eksekusi query
     $result = mysqli_query($conn, $query_pantai);
@@ -275,24 +276,30 @@ footer a:hover {
     if(mysqli_num_rows($result) > 0) {
         // Ambil data dari hasil query
         $row = mysqli_fetch_assoc($result);
-        // Simpan nilai id_ikan ke dalam variabel
-        $id_ikan = $row['id_ikan'];
+        // Simpan nilai id_konten ke dalam variabel
+        $id_konten = $row['id_konten'];
     } else {
         // Tampilkan pesan jika data tidak ditemukan
-        echo "Data ikan tidak ditemukan.";
+        echo "Data konten tidak ditemukan.";
     }
     ?>
-    <h2>Update Data Ikan</h2>
+    <h2>Update Data Konten</h2>
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id_ikan" value="<?php echo $id_ikan; ?>"> <!-- Hidden input untuk menyimpan nilai id_ikan -->
+        <input type="hidden" name="id_konten" value="<?php echo $id_konten; ?>"> <!-- Hidden input untuk menyimpan nilai id_konten -->
         <div class="form-group">
-            <label>Nama Ikan:</label>
-            <input type="text" name="nama_ikan" class="form-control" placeholder="Masukan Nama Ikan" value="<?php echo $row['nama_ikan']; ?>" required />
+            <label>Nama:</label>
+            <input type="text" name="nama" class="form-control" placeholder="Masukan Nama Ikan" value="<?php echo $row['nama']; ?>" required />
         </div>
         <div class="form-group">
-            <label>Jenis:</label>
-            <input type="text" name="jenis" class="form-control" placeholder="Masukan Jenis" value="<?php echo $row['jenis']; ?>"required/>
+        <label>Jenis:</label>
+            <select name="id_kategori" id="id_kategori" required>
+                        
+                        <option disabled selected> Pilih </option>
+                        <option value="1">Ikan</option>
+                            <option value="2">Terumbu Karang</option>
+                            <option value="3">Pantai</option>
+                        </select>
         </div>
         <div class="form-group">
             <label for="gambar">Gambar:</label>

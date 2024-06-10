@@ -234,7 +234,7 @@ footer a:hover {
     width: 120px;
 }
 
-.jenis-col {
+.harga-col {
     width: 80px;
 }
 
@@ -304,9 +304,10 @@ th, td {
         </div>
         <nav class="nav-links">
             <a href="../datauser.php">User</a>
-            <a href="../dataikan/dataikan.php">Ikan</a>
-            <a href="../datakarang/datakarang.php">Karang</a>
-            <a href="../datapantai/datapantai.php">Pantai</a>
+            <a href="../dataikan/dataikan.php">Konten</a>
+            <a href="../datakarang/datakarang.php">Kategori</a>
+            <a href="../datapantai/datapantai.php">Diving</a>
+            <a href="../transaksiadmin/transaksi.php">Transaksi</a>
             <a href="../saran1/admin_page.php">Saran</a>
         </nav>
         <div class="auth-links">
@@ -320,15 +321,15 @@ th, td {
 
 <div class="container">
     
-    <h4><center>DAFTAR PANTAI</center></h4>
+    <h2><center>DAFTAR DIVING</center></h2>
     <br>
     <?php
     include "koneksi.php";
 
-    if (isset($_GET['id_pantai'])) {
-        $id_pantai = htmlspecialchars($_GET["id_pantai"]);
+    if (isset($_GET['id_diving'])) {
+        $id_diving = htmlspecialchars($_GET["id_diving"]);
 
-        $sql = "DELETE FROM pantai WHERE id_pantai='$id_pantai'";
+        $sql = "DELETE FROM diving WHERE id_diving='$id_diving'";
         $hasil = mysqli_query($conn, $sql);
 
         if ($hasil) {
@@ -340,13 +341,13 @@ th, td {
     }
     ?>
 
-    
+<a href="create.php" class="btn btn-primary" role="button">Tambah Data</a><br><br>
     <table class="my-3 table table-bordered">
         <thead>
         <tr class="table-primary">
         <th class="no-col">No</th>
-        <th class="nama-col">Nama Ikan</th>
-            <th class="jenis-col">Jenis</th>
+        <th class="nama-col">Nama </th>
+            <th class="harga-col">Harga</th>
             
             <th class="image-col">Image</th>
             <th class="deskripsi-col">Deskripsi</th>
@@ -356,7 +357,7 @@ th, td {
         </thead>
         <tbody>
         <?php
-        $sql = "SELECT * FROM pantai";
+        $sql = "SELECT * FROM diving";
         $hasil = mysqli_query($conn, $sql);
         $no = 0;
         while ($data = mysqli_fetch_array($hasil)) {
@@ -364,16 +365,16 @@ th, td {
         ?>
         <tr>
         <td class="no-col"><?php echo $no; ?></td>
-            <td class="nama-col"><?php echo $data["nama_pantai"]; ?></td>
-            <td class="jenis-col"><?php echo $data["jenis"]; ?></td>
+            <td class="nama-col"><?php echo $data["nama"]; ?></td>
+            <td class="harga-col"><?php echo $data["harga"]; ?></td>
             
             <td class="image-col"><img src="uploaded_img/<?php echo $data["gambar"]; ?>" alt="Gambar Pantai" width="100"></td>
             <td class="deskripsi-col"><?php echo nl2br($data["deskripsi"]); ?></td>
             <td class="website-col"><?php echo $data["website"]; ?></td>
             <td>
-                <a href="update.php?id_pantai=<?php echo htmlspecialchars($data['id_pantai']); ?>" class="btn btn-warning btn-sm" role="button">Update</a> 
+                <a href="update.php?id_diving=<?php echo htmlspecialchars($data['id_diving']); ?>" class="btn btn-warning btn-sm" role="button">Update</a> 
                 <br> <br>
-                <a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id_pantai=<?php echo $data['id_pantai']; ?>" class="btn btn-danger btn-sm" role="button">Delete </a>
+                <a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id_diving=<?php echo $data['id_diving']; ?>" class="btn btn-danger btn-sm" role="button">Delete </a>
             </td>
         </tr>
         <?php
@@ -381,7 +382,7 @@ th, td {
         ?>
         </tbody>
     </table>
-    <a href="create.php" class="btn btn-primary" role="button">Tambah Data</a><br><br><br>
+   <br>
 </div>
 <footer>
         <p>&copy; 2024 Allfadhil_. All rights reserved.</p>

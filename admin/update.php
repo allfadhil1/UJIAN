@@ -194,15 +194,16 @@ footer a:hover {
             <a href="datapantai.php">Hello Admin</a>
         </div>
         <nav class="nav-links">
-            <a href="../datauser.php">User</a>
-            <a href="../dataikan/dataikan.php">Pantai</a>
-            <a href="../datakarang/datakarang.php">Pantai</a>
-            <a href="../datapantai/datapantai.php">Pantai</a>
-            <a href="../saran1/admin_page.php">Saran</a>
+            <a href="datauser.php">User</a>
+            <a href="dataikan/dataikan.php">Konten</a>
+            <a href="datakarang/datakarang.php">Kategori</a>
+            <a href="../datapantai/datapantai.php">Diving</a>
+            <a href="../transaksiadmin/transaksi.php">Transaksi</a>
+            <a href="saran1/admin_page.php">Saran</a>
         </nav>
         <div class="auth-links">
-            <a href="../../login.php">Login</a>
-            <a href="../../register.php">Register</a>
+            <a href="../../login.php">Logout</a>
+           
         </div>
     </header>
 <br> <br>
@@ -234,27 +235,27 @@ footer a:hover {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $ID=htmlspecialchars($_POST["ID"]);
-        $namadepans=input($_POST["Nama_Depan"]);
-        $namabelakangs=input($_POST["Nama_Belakang"]);
+        $gmails=input($_POST["Gmail"]);
+        $Telepons=input($_POST["Telepon"]);
         $usernames=input($_POST["Username"]);
         $passwords=input($_POST["Password"]);
         $levels=input($_POST["Level"]);
 
         //Query update data pada tabel anggota
         $sql="update user set
-			Nama_Depan='$namadepans',
-			Nama_Belakang='$namabelakangs',
-			Username='$usernames',
-			Password='$passwords',
-			Level='$levels'
-			where ID=$ID";
+            Gmail='$gmails',
+            Telepon='$Telepons',
+            Username='$usernames',
+            Password='$passwords',
+            Level='$levels'
+            where ID=$ID";
 
         //Mengeksekusi atau menjalankan query diatas
         $hasil=mysqli_query($mysql,$sql);
 
         //Kondisi apakah berhasil atau tidak dalam mengeksekusi query diatas
         if ($hasil) {
-            header("Location:datauser.php");
+            echo "<div class='alert alert-success'> Data berhasil disimpan.</div>";
         }
         else {
             echo "<div class='alert alert-danger'> Data Gagal disimpan.</div>";
@@ -269,29 +270,29 @@ footer a:hover {
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
     <div class="form-group">
-        <label>Nama Depan:</label>
-        <input type="text" name="Nama_Depan" class="form-control" placeholder="Masukkan Nama Depan" value="<?php echo $data['Nama_Depan']; ?>" required />
+        <label>Gmail:</label>
+        <input type="text" name="Gmail" class="form-control" placeholder="Masukkan Gmail" value="<?php echo isset($data['Gmail']) ? $data['Gmail'] : ''; ?>" required />
     </div>
     <div class="form-group">
-        <label>Nama Belakang:</label>
-        <input type="text" name="Nama_Belakang" class="form-control" placeholder="Masukkan Nama Belakang" value="<?php echo $data['Nama_Belakang']; ?>" required/>
+        <label>Telepon:</label>
+        <input type="text" name="Telepon" class="form-control" placeholder="Masukkan No Telepon" value="<?php echo isset($data['Telepon']) ? $data['Telepon'] : ''; ?>" required/>
     </div>
     <div class="form-group">
         <label>Username:</label>
-        <input type="text" name="Username" class="form-control" placeholder="Masukkan Username" value="<?php echo $data['Username']; ?>" required/>
+        <input type="text" name="Username" class="form-control" placeholder="Masukkan Username" value="<?php echo isset($data['Username']) ? $data['Username'] : ''; ?>" required/>
     </div>
     <div class="form-group">
         <label>Password:</label>
-        <input type="text" name="Password" class="form-control" placeholder="Masukkan Password" value="<?php echo $data['Password']; ?>" required/>
+        <input type="text" name="Password" class="form-control" placeholder="Masukkan Password" value="<?php echo isset($data['Password']) ? $data['Password'] : ''; ?>" required/>
     </div>
     <div class="form-group">
-        <label>Level:</label><br>
-        <select name="Level" ID="Level" required>
-            <option value="ADMIN" <?php if($data['Level'] == 'ADMIN') echo 'selected'; ?>>Admin</option>
-            <option value="USER" <?php if($data['Level'] == 'USER') echo 'selected'; ?>>User</option>
+        <label>Level:</label>
+        <select name="Level" id="Level" required>
+            <option value="ADMIN" <?php echo (isset($data['Level']) && $data['Level'] == 'ADMIN') ? 'selected' : ''; ?>>Admin</option>
+            <option value="USER" <?php echo (isset($data['Level']) && $data['Level'] == 'USER') ? 'selected' : ''; ?>>User</option>
         </select>
     </div>
-    <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>" /><br><br>
+    <input type="hidden" name="ID" value="<?php echo isset($data['ID']) ? $data['ID'] : ''; ?>" /><br><br>
     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     <a href="datauser.php" class="btn btn-secondary">Cancel</a>
 </form>

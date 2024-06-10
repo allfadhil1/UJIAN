@@ -186,14 +186,15 @@ footer {
         </div>
         <nav class="nav-links">
             <a href="../datauser.php">User</a>
-            <a href="../dataikan/dataikan.php">Ikan</a>
-            <a href="../datakarang/datakarang.php">Karang</a>
-            <a href="../datapantai/datapantai.php">Pantai</a>
+            <a href="../dataikan/dataikan.php">Konten</a>
+            <a href="../datakarang/datakarang.php">Kategori</a>
+            <a href="../datapantai/datapantai.php">Diving</a>
+            <a href="../transaksiadmin/transaksi.php">Transaksi</a>
             <a href="../saran1/admin_page.php">Saran</a>
         </nav>
         <div class="auth-links">
-            <a href="../../login.php">Login</a>
-            <a href="../../register.php">Register</a>
+            <a href="../../login.php">Logout</a>
+         
         </div>
     </header>
     <div class="container">

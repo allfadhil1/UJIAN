@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" href="../styss">
 <style>
+    
     /* Reset CSS */
 * {
     margin: 0;
@@ -231,9 +232,12 @@ footer a:hover {
 }
 
 .nama-col {
-    width: 120px;
+    width: 250px;
 }
 
+.telepon-col {
+    width: 170px;
+}
 .jenis-col {
     width: 70px;
 }
@@ -308,19 +312,20 @@ Data User</title>
         </div>
         <nav class="nav-links">
             <a href="datauser.php">User</a>
-            <a href="dataikan/dataikan.php">Ikan</a>
-            <a href="datakarang/datakarang.php">Karang</a>
-            <a href="datapantai.datapantai.php">Pantai</a>
+            <a href="dataikan/dataikan.php">Konten</a>
+            <a href="datakarang/datakarang.php">Kategori</a>
+            <a href="datapantai/datapantai.php">Diving</a>
+            <a href="../transaksiadmin/transaksi.php">Transaksi</a>
             <a href="saran1/admin_page.php">Saran</a>
         </nav>
         <div class="auth-links">
-            <a href="../login.php">Login</a>
-            <a href="../register.php">Register</a>
+            <a href="../login.php">Logout</a>
+          
         </div>
     </header>
 <div class="container">
    <br>
-    <h4><center>DAFTAR USER</center></h4>
+    <h2><center>DAFTAR USER</center></h2>
     <br>
    <?php
 
@@ -339,14 +344,14 @@ Data User</title>
 
 
      <tr class="table-danger">
-            
+     <a href="Register.php" class="btn btn-primary" role="button">Tambah Data</a><br><br>
         <thead>
         <tr>
        <table class="my-3 table table-bordered">
             <tr class="table-primary">           
-            <th>No</th>
-            <th>Nama Depan</th>
-            <th>Nama Belakang</th>
+            <th class="no-col">No</th>
+            <th class="nama-col">Gmail</th>
+            <th class="telepon-col">No Telepon</th>
             <th>Username</th>
             <th>Password</th>
             <th>Level</th>
@@ -368,8 +373,8 @@ Data User</title>
             <tbody>
             <tr>
                 <td><?php echo $no;?></td>
-                <td><?php echo $data["Nama_Depan"]; ?></td>
-                <td><?php echo $data["Nama_Belakang"];   ?></td>
+                <td><?php echo $data["Gmail"]; ?></td>
+                <td><?php echo $data["Telepon"];   ?></td>
                 <td><?php echo $data["Username"];   ?></td>
                 <td><?php echo $data["Password"];   ?></td>
                 <td><?php echo $data["Level"];   ?></td>
@@ -388,7 +393,7 @@ Data User</title>
         }
         ?>
     </table>
-    <a href="../Register.php" class="btn btn-primary" role="button">Tambah Data</a>
+   
 </div>
 <br><br>
 <footer>

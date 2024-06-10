@@ -248,9 +248,10 @@
         </div>
         <nav class="nav-links">
             <a href="../datauser.php">User</a>
-            <a href="../dataikan/dataikan.php">Ikan</a>
-            <a href="../datakarang/datakarang.php">Karang</a>
-            <a href="../datapantai/datapantai.php">Pantai</a>
+            <a href="../dataikan/dataikan.php">Konten</a>
+            <a href="../datakarang/datakarang.php">Kategori</a>
+            <a href="../datapantai/datapantai.php">Diving</a>
+            <a href="../transaksiadmin/transaksi.php">Transaksi</a>
             <a href="../saran1/admin_page.php">Saran</a>
         </nav>
         <div class="auth-links">
@@ -275,8 +276,8 @@
         // Cek apakah ada kiriman form dari method POST
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            $nama_pantai = input($_POST["nama_pantai"]);
-            $jenis = input($_POST["jenis"]);
+            $nama = input($_POST["nama"]);
+            $harga = input($_POST["harga"]);
             
             $Gambar = $_FILES['gambar']['name'];
             $Gambar_tmp_nama = $_FILES['gambar']['tmp_name'];
@@ -284,8 +285,8 @@
             $deskripsi = input($_POST["deskripsi"]);
             $website = input($_POST["website"]);
 
-            // Query untuk menginput data ke dalam tabel pantai
-            $sql = "INSERT INTO pantai (nama_pantai, jenis, gambar, deskripsi, website) VALUES ('$nama_pantai', '$jenis', '$Gambar', '$deskripsi', '$website')";
+            // Query untuk menginput data ke dalam tabel diving
+            $sql = "INSERT INTO diving (nama, harga, gambar, deskripsi, website) VALUES ('$nama', '$harga', '$Gambar', '$deskripsi', '$website')";
             
             if (mysqli_query($conn, $sql)) {
                 // Jika berhasil memasukkan data, pindahkan gambar ke folder yang ditentukan
@@ -294,22 +295,22 @@
                 echo "<div class='alert alert-success'> Data berhasil disimpan.</div>";
                // header("Location:dataikan.php");
                 // Kosongkan nilai input setelah pengiriman sukses
-                $_POST['nama_pantai'] = $_POST['jenis'] = $_POST['deskripsi'] = $_POST['website'] ='';
+                $_POST['nama'] = $_POST['harga'] = $_POST['deskripsi'] = $_POST['website'] ='';
             } else {
                 echo "<div class='alert alert-danger'> Data Gagal disimpan.</div>";
             }
         }
         ?>
-        <h2>Input Data Pantai</h2><br>
+        <h2>Input Data Diving</h2><br>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label>Nama Pantai:</label>
-                <input type="text" name="nama_pantai" class="form-control" placeholder="Masukan Nama Pantai" required />
+                <label>Nama Diving:</label>
+                <input type="text" name="nama" class="form-control" placeholder="Masukan Nama Diving" required />
             </div>
             <div class="form-group">
-                <label>Jenis</label>
-                <input type="text" name="jenis" class="form-control" placeholder="Masukan Jenis" required/>
+                <label>Harga</label>
+                <input type="text" name="harga" class="form-control" placeholder="Masukan Harga" required/>
             </div>
             <div class="form-group">
                 <label for="gambar">Gambar:</label>

@@ -304,14 +304,15 @@ th, td {
         </div>
         <nav class="nav-links">
             <a href="../datauser.php">User</a>
-            <a href="../dataikan/dataikan.php">Ikan</a>
-            <a href="../datakarang/datakarang.php">Karang</a>
-            <a href="../datapantai/datapantai.php">Pantai</a>
+            <a href="../dataikan/dataikan.php">Konten</a>
+            <a href="../datakarang/datakarang.php">Kategori</a>
+            <a href="../datapantai/datapantai.php">Diving</a>
+            <a href="../transaksiadmin/transaksi.php">Transaksi</a>
             <a href="../saran1/admin_page.php">Saran</a>
         </nav>
         <div class="auth-links">
-            <a href="../../login.php">Login</a>
-            <a href="../../register.php">Register</a>
+            <a href="../../login.php">Logout</a>
+           
         </div>
     </header>
 <br>
@@ -320,15 +321,15 @@ th, td {
 
 <div class="container">
     
-    <h4><center>DAFTAR IKAN</center></h4>
+    <h2><center>DAFTAR KONTEN</center></h4>
     <br>
     <?php
     include "koneksi.php";
 
-    if (isset($_GET['id_ikan'])) {
-        $id_ikan = htmlspecialchars($_GET["id_ikan"]);
+    if (isset($_GET['id_konten'])) {
+        $id_konten = htmlspecialchars($_GET["id_konten"]);
 
-        $sql = "DELETE FROM ikan WHERE id_ikan='$id_ikan'";
+        $sql = "DELETE FROM konten WHERE id_konten='$id_konten'";
         $hasil = mysqli_query($conn, $sql);
 
         if ($hasil) {
@@ -339,13 +340,13 @@ th, td {
         }
     }
     ?>
-
+ <a href="create.php" class="btn btn-primary" role="button">Tambah Data</a><br><br>
     
     <table class="my-3 table table-bordered">
         <thead>
         <tr class="table-primary">
         <th class="no-col">No</th>
-        <th class="nama-col">Nama Ikan</th>
+        <th class="nama-col">Nama</th>
             <th class="jenis-col">Jenis</th>
             
             <th class="image-col">Image</th>
@@ -356,7 +357,10 @@ th, td {
         </thead>
         <tbody>
         <?php
-        $sql = "SELECT * FROM ikan";
+        $sql = "SELECT * 
+FROM konten
+JOIN kategori 
+ON konten.id_kategori = kategori.id_kategori";
         $hasil = mysqli_query($conn, $sql);
         $no = 0;
         while ($data = mysqli_fetch_array($hasil)) {
@@ -364,16 +368,16 @@ th, td {
         ?>
         <tr>
         <td class="no-col"><?php echo $no; ?></td>
-            <td class="nama-col"><?php echo $data["nama_ikan"]; ?></td>
-            <td class="jenis-col"><?php echo $data["jenis"]; ?></td>
+            <td class="nama-col"><?php echo $data["nama"]; ?></td>
+            <td class="jenis-col"><?php echo $data["nama_kategori"]; ?></td>
             
             <td class="image-col"><img src="uploaded_img/<?php echo $data["gambar"]; ?>" alt="Gambar Ikan" width="100"></td>
             <td class="deskripsi-col"><?php echo nl2br($data["deskripsi"]); ?></td>
             <td class="website-col"><?php echo $data["website"]; ?></td>
             <td>
-                <a href="update.php?id_ikan=<?php echo htmlspecialchars($data['id_ikan']); ?>" class="btn btn-warning btn-sm" role="button">Update</a> 
+                <a href="update.php?id_konten=<?php echo htmlspecialchars($data['id_konten']); ?>" class="btn btn-warning btn-sm" role="button">Update</a> 
                 <br> <br>
-                <a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id_ikan=<?php echo $data['id_ikan']; ?>" class="btn btn-danger btn-sm" role="button">Delete </a>
+                <a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?id_konten=<?php echo $data['id_konten']; ?>" class="btn btn-danger btn-sm" role="button">Delete </a>
             </td>
         </tr>
         <?php
@@ -381,7 +385,7 @@ th, td {
         ?>
         </tbody>
     </table>
-    <a href="create.php" class="btn btn-primary" role="button">Tambah Data</a><br><br><br>
+   <br>
 </div>
 <footer>
         <p>&copy; 2024 Allfadhil_. All rights reserved.</p>

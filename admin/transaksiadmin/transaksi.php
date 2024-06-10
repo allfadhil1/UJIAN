@@ -1,6 +1,28 @@
+<?php
+session_start();
+
+// Cek apakah pengguna sudah login dan levelnya adalah USER
+if (!isset($_SESSION['Username']) || $_SESSION['Level'] != 'USER') {
+    header("Location: ../login.php");
+    exit();
+}
+
+include '../../koneksi.php';
+
+// Query untuk mengambil semua data pesanan
+$query_mysql = mysqli_query($mysql, "
+    SELECT transaksi.id_transaksi, user.Gmail, user.Telepon, user.Username, transaksi.tanggal_booking, transaksi.metode_pembayaran, transaksi.total_harga, transaksi.total_pesanan, diving.nama, diving.gambar
+    FROM transaksi
+    JOIN user ON transaksi.ID = user.ID
+    JOIN diving ON transaksi.id_diving = diving.id_diving
+") or die(mysqli_error($mysql));
+?>
 <!DOCTYPE html>
-<html>
+<html lang="ID">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Pesanan Seluruh Pengguna</title>
     <style>
         /* Reset CSS */
         * {
@@ -223,35 +245,40 @@
 
         /* Column widths */
         .no-col {
-            width: 50px;
+            width: 46px;
         }
 
         .username-col {
-            width: 150px;
+            width: 105px;
         }
 
-        .password-col {
+        .gmail-col {
             width: 130px;
         }
 
-        .nama-col {
-            width: 140px;
+        .telepon-col{
+            width: 135px;
         }
 
-        .jenis-col {
-            width: 100px;
+        .tanggal-col{
+            width: 110px;
         }
 
-        .deskripsi-col {
-            width: 650px;
+        .pesanan-col{
+            width: 75px;
         }
 
-        .image-col {
-            width: 180px;
+        .diving-col{
+            width: 95px;
         }
 
-        .website-col {
-            width: 280px;
+        .metode-col{
+            width: 105px;
+        }
+
+        .image-col img {
+            max-width: 100px;
+            height: auto;
         }
 
         .options a {
@@ -297,49 +324,39 @@
         }
         .action-buttons {
             display: flex;
+            flex-direction: column;
             gap: 10px;
-        }
-
-        .username-col{
-
         }
     </style>
 </head>
-<title>Data Saran Ikan, Pantai Dan Terumbu Karang</title>
-
 <body>
 <header class="admin-header">
-        <div class="logo">
-            <a href="../homeadmin/homeadmin.php">Hello Admin</a>
-        </div>
-        <nav class="nav-links">
-            <a href="../datauser.php">User</a>
-            <a href="../dataikan/dataikan.php">Konten</a>
-            <a href="../datakarang/datakarang.php">Kategori</a>
-            <a href="../datapantai/datapantai.php">Diving</a>
-            <a href="../transaksiadmin/transaksi.php">Transaksi</a>
-            <a href="../saran1/admin_page.php">Saran</a>
-        </nav>
-        <div class="auth-links">
-            <a href="../../login.php">Logout</a>
-         
-        </div>
-    </header>
+    <div class="logo">
+        <a href="../homeadmin/homeadmin.php">Hello Admin</a>
+    </div>
+    <nav class="nav-links">
+        <a href="../datauser.php">User</a>
+        <a href="../dataikan/dataikan.php">Konten</a>
+        <a href="../datakarang/datakarang.php">Kategori</a>
+        <a href="../datapantai/datapantai.php">Diving</a>
+        <a href="../transaksiadmin/transaksi.php">Transaksi</a>
+        <a href="../saran1/admin_page.php">Saran</a>
+    </nav>
+    <div class="auth-links">
+        <a href="../../login.php">Logout</a>
+    </div>
+</header>
 <br>
 
-<h1></h1>
-
 <div class="container">
-    <h2><center>DATA SARAN IKAN, PANTAI, DAN TERUMBU KARANG</center></h2>
+    <h2><center>Riwayat Pesanan Seluruh Pengguna</center></h2>
     <br>
     <?php
-    include "config.php";
+    if (isset($_GET['id_transaksi'])) {
+        $id_transaksi = htmlspecialchars($_GET["id_transaksi"]);
 
-    if (isset($_GET['id_saran'])) {
-        $id_saran = htmlspecialchars($_GET["id_saran"]);
-
-        $sql = "DELETE FROM saran WHERE id_saran='$id_saran'";
-        $hasil = mysqli_query($conn, $sql);
+        $sql = "DELETE FROM transaksi WHERE id_transaksi='$id_transaksi'";
+        $hasil = mysqli_query($mysql, $sql);
 
         if ($hasil) {
             echo "<div class='alert alert-success'>Data berhasil dihapus.</div>";
@@ -348,48 +365,55 @@
         }
     }
     ?>
- <a href="../../proectDasprog/user_form.php" class="btn btn-primary" role="button">Tambah Data</a><br><br>
+    <a href="user_form.php" class="btn btn-primary" role="button">Tambah Data</a><br><br>
     <table class="my-3 table table-bordered">
         <thead>
         <tr class="table-primary">
             <th class="no-col">No</th>
-            <th class="username-col">Username Pengguna</th> <!-- Kolom baru -->
-          
-            
-            <th class="deskripsi-col">Deskripsi</th>
-            <th>Aksi</th> <!-- Kolom baru -->
+            <th class="username-col">Username</th>
+            <th class="gmail-col">Gmail</th>
+            <th class="telepon-col">Telepon</th>
+            <th class="tanggal-col">Tanggal Booking</th>
+            <th class="metode-col">Metode Pembayaran</th>
+            <th class="pesanan-col">Total Pesanan</th>
+            <th>Total Harga</th>
+            <th class="diving-col">Nama Diving</th>
+            <th>Gambar</th>
+            <th>Aksi</th>
         </tr>
         </thead>
         <tbody>
         <?php
-                // Query SQL dengan JOIN untuk mendapatkan data saran beserta username dan password pengguna
-                $sql = "SELECT saran.*, user.Username, user.Password 
-                FROM saran 
-                INNER JOIN user ON saran.ID = user.ID";
-        
-                $hasil = mysqli_query($conn, $sql);
-                $no = 0;
-                while ($data = mysqli_fetch_array($hasil)) {
-                    $no++;
-                ?>
-                    <tr>
-                        <td class="no-col"><?php echo $no; ?></td>
-                        <td class="username-col"><?php echo $data["Username"]; ?></td> <!-- Menampilkan username pengguna -->
-                       
-                        <td class="deskripsi-col"><?php echo $data["Deskripsi"]; ?></td>
-                        <td> <!-- Kolom baru -->
-                            <div class="action-buttons">
-                                <a href="admin_update.php?id_saran=<?php echo htmlspecialchars($data['id_saran']); ?>" class="btn btn-warning" role="button">Update</a>
-                                <a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?id_saran=<?php echo $data['id_saran']; ?>" class="btn btn-danger" role="button">Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                <?php
-                }
-                ?>
+        $no = 1;
+        if (mysqli_num_rows($query_mysql) > 0) {
+            while ($data = mysqli_fetch_array($query_mysql)) {
+                echo "<tr>
+                    <td class='no-col'>{$no}</td>
+                    <td class='username-col'>{$data['Username']}</td>
+                    <td class='gmail-col'>{$data['Gmail']}</td>
+                    <td class='telepon-col'>{$data['Telepon']}</td>
+                    <td class='tanggal-col'>{$data['tanggal_booking']}</td>
+                    <td>{$data['metode_pembayaran']}</td>
+                    <td>{$data['total_pesanan']}</td>
+                    <td>Rp " . number_format($data['total_harga'], 0, ',', '.') . "</td>
+                    <td>{$data['nama']}</td>
+                    <td class='image-col'><img src='../datapantai/uploaded_img/{$data['gambar']}' alt='{$data['nama']}'></td>
+                    <td>
+                        <div class='action-buttons'>
+                            <a href='admin_update.php?id_transaksi={$data['id_transaksi']}' class='btn btn-warning' role='button'>Update</a>
+                            <a href='{$_SERVER["PHP_SELF"]}?id_transaksi={$data['id_transaksi']}' class='btn btn-danger' role='button'>Delete</a>
+                        </div>
+                    </td>
+                </tr>";
+                $no++;
+            }
+        } else {
+            echo "<tr><td colspan='11' class='no-data'>Tidak ada riwayat pesanan.</td></tr>";
+        }
+        ?>
         </tbody>
     </table>
-   <br>
+    <br>
 </div>
 <footer>
     <p>&copy; 2024 Allfadhil_. All rights reserved.</p>
@@ -401,4 +425,3 @@
 </footer>
 </body>
 </html>
-

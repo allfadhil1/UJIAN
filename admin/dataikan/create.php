@@ -239,6 +239,70 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* CSS untuk Form */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #495057;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #565e64;
+    border-color: #434a50;
+}
+
     </style>
 </head>
 <body>
@@ -248,14 +312,15 @@
         </div>
         <nav class="nav-links">
             <a href="../datauser.php">User</a>
-            <a href="../dataikan/dataikan.php">Ikan</a>
-            <a href="../datakarang/datakarang.php">Karang</a>
-            <a href="../datapantai/datapantai.php">Pantai</a>
+            <a href="../dataikan/dataikan.php">Konten</a>
+            <a href="../datakarang/datakarang.php">Kategori</a>
+            <a href="../datapantai/datapantai.php">Diving</a>
+            <a href="../transaksiadmin/transaksi.php">Transaksi</a>
             <a href="../saran1/admin_page.php">Saran</a>
         </nav>
         <div class="auth-links">
-            <a href="../../login.php">Login</a>
-            <a href="../../register.php">Register</a>
+            <a href="../../login.php">Logout</a>
+            
         </div>
     </header>
     <br> <br>
@@ -275,8 +340,8 @@
         // Cek apakah ada kiriman form dari method POST
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            $nama_ikan = input($_POST["nama_ikan"]);
-            $jenis = input($_POST["jenis"]);
+            $nama = input($_POST["nama"]);
+            $id_kategori = input($_POST["id_kategori"]);
             
             $Gambar = $_FILES['gambar']['name'];
             $Gambar_tmp_nama = $_FILES['gambar']['tmp_name'];
@@ -285,7 +350,7 @@
             $website = input($_POST["website"]);
 
             // Query untuk menginput data ke dalam tabel ikan
-            $sql = "INSERT INTO ikan (nama_ikan, jenis, gambar, deskripsi, website) VALUES ('$nama_ikan', '$jenis', '$Gambar', '$deskripsi', '$website')";
+            $sql = "INSERT INTO konten (nama, id_kategori, gambar, deskripsi, website) VALUES ('$nama', '$id_kategori', '$Gambar', '$deskripsi', '$website')";
             
             if (mysqli_query($conn, $sql)) {
                 // Jika berhasil memasukkan data, pindahkan gambar ke folder yang ditentukan
@@ -294,22 +359,36 @@
                 echo "<div class='alert alert-success'> Data berhasil disimpan.</div>";
               
                 // Kosongkan nilai input setelah pengiriman sukses
-                $_POST['nama_ikan'] = $_POST['jenis'] = $_POST['deskripsi'] = $_POST['website'] ='';
+                $_POST['nama'] = $_POST['id_kategori'] = $_POST['deskripsi'] = $_POST['website'] ='';
             } else {
                 echo "<div class='alert alert-danger'> Data Gagal disimpan.</div>";
             }
         }
         ?>
-        <h2>Input Data Ikan</h2><br>
+        <h2>Input Data Konten</h2><br>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label>Nama Ikan:</label>
-                <input type="text" name="nama_ikan" class="form-control" placeholder="Masukan Nama Ikan" required />
+                <label>Nama:</label>
+                <input type="text" name="nama" class="form-control" placeholder="Masukan Nama Ikan" required />
             </div>
             <div class="form-group">
-                <label>Jenis</label>
-                <input type="text" name="jenis" class="form-control" placeholder="Masukan Jenis" required/>
+            <label>Jenis:</label>
+
+            <select name="id_kategori" id="id_kategori" required>
+                        
+                        <option disabled selected> Pilih </option>
+                        <?php
+                        $sql = "SELECT * FROM kategori";
+                        $hasil = mysqli_query($conn, $sql);
+                        while ($data = mysqli_fetch_array($hasil)):
+                      ?>
+                        
+                        <option value="<?php echo $data["id_kategori"];?>"><?php echo $data["nama_kategori"];?></option>
+                          
+                    
+                        <?php endwhile;?>
+            </select>
             </div>
             <div class="form-group">
                 <label for="gambar">Gambar:</label>

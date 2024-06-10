@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Set sesi berdasarkan level pengguna
         $_SESSION['Username'] = $username;
-        $_SESSION['UserID'] = $data['id']; // Asumsikan ada kolom 'id' di tabel user
+        $_SESSION['UserID'] = $data['ID']; // Asumsikan ada kolom 'id' di tabel user
         $_SESSION['Level'] = $data['Level'];
 
         if ($data['Level'] == "ADMIN") {

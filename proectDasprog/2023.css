@@ -396,21 +396,23 @@ span{
 
 }
 
-.detel a{
-    background: rgb(5, 116, 176);
-    padding: 1px;
+.detel a {
     text-decoration: none;
-    font-weight: bold;
-    color: #ffff;
     display: inline-block;
-    margin:  0;
-    border-radius: 10px;
+    color: #fff;
+    font-size: 24px;
+    border: 2px solid #0574B0;
+    background-color: #0574B0;
+    padding: 20px 80px; /* Increased padding for larger button */
+    border-radius: 50px;
+    margin-top: 20px; /* Added margin-top for spacing */
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-.detel a:hover{
-    background-color:rgb(6, 154, 234) ;
+.detel a:hover {
+    background-color: #045a8b;
+    border-color: #045a8b;
 }
-
 .images{
     width: 45%;
     height: 110%;
