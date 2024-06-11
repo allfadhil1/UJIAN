@@ -22,7 +22,7 @@ $query_mysql = mysqli_query($mysql, "
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riwayat Pesanan Seluruh Pengguna</title>
+    <title>Riwayat </title>
     <style>
         /* Reset CSS */
         * {
@@ -400,7 +400,7 @@ $query_mysql = mysqli_query($mysql, "
                     <td class='image-col'><img src='../datapantai/uploaded_img/{$data['gambar']}' alt='{$data['nama']}'></td>
                     <td>
                         <div class='action-buttons'>
-                            <a href='admin_update.php?id_transaksi={$data['id_transaksi']}' class='btn btn-warning' role='button'>Update</a>
+                           
                             <a href='{$_SERVER["PHP_SELF"]}?id_transaksi={$data['id_transaksi']}' class='btn btn-danger' role='button'>Delete</a>
                         </div>
                     </td>

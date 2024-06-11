@@ -379,7 +379,7 @@
                         <td class="deskripsi-col"><?php echo $data["Deskripsi"]; ?></td>
                         <td> <!-- Kolom baru -->
                             <div class="action-buttons">
-                                <a href="admin_update.php?id_saran=<?php echo htmlspecialchars($data['id_saran']); ?>" class="btn btn-warning" role="button">Update</a>
+                               
                                 <a href="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?id_saran=<?php echo $data['id_saran']; ?>" class="btn btn-danger" role="button">Delete</a>
                             </div>
                         </td>
